@@ -21,6 +21,7 @@ class I2cDevice {
     kI2cOtherError = 4,                       /**< 4：其他I2C错误 */
     kI2cTimeout = 5,                          /**< 5：I2C通讯超时 */
     kInvalidParameter = 6,                    /**< 6：参数错误 */
+    kUnknownError = 7,                        /**< 7: 未知错误*/
   };
 
   explicit I2cDevice(TwoWire& wire = Wire, const uint8_t i2c_address = kDefaultI2cAddress);
