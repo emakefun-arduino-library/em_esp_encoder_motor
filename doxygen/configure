@@ -1,0 +1,8 @@
+@INCLUDE_PATH  = doxygen
+@INCLUDE = base.cfg
+PROJECT_NAME     = "Emakefun I2C Device"
+PROJECT_NUMBER   = 1.0
+ENABLED_SECTIONS = Chinese
+OUTPUT_LANGUAGE  = Chinese
+INPUT            = src \
+                   examples/i2c_device/i2c_device.ino

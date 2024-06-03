@@ -1,3 +1,7 @@
+/**
+ * @example i2c_device.ino
+ */
+
 #include "i2c_device.h"
 
 #define INFINITE_LOOP_ON_FAILURE InfiniteLoopOnFailure(__FUNCTION__, __LINE__)
