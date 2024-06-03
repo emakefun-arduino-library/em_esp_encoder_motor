@@ -1,5 +1,5 @@
-#ifndef I2C_DEVICE_
-#define I2C_DEVICE_
+#ifndef EMAKEFUN_I2C_DEVICE_H_
+#define EMAKEFUN_I2C_DEVICE_H_
 
 #include <Wire.h>
 #include <stdint.h>
@@ -25,6 +25,11 @@ class I2cDevice {
   };
 
   explicit I2cDevice(TwoWire& wire = Wire, const uint8_t i2c_address = kDefaultI2cAddress);
+
+  /**
+   * @brief 初始化函数
+   * @return 返回值请参考 @ref ErrorCode
+   */
   ErrorCode Initialize();
 
  private:
