@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef EMAKEFUN_I2C_DEVICE_H_
 #define EMAKEFUN_I2C_DEVICE_H_
 
