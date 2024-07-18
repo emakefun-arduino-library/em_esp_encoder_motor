@@ -24,7 +24,10 @@ class I2cDevice {
     kUnknownError = 7,                        /**< 7：未知错误*/
   };
 
-  explicit I2cDevice(TwoWire& wire = Wire, const uint8_t i2c_address = kDefaultI2cAddress);
+  explicit I2cDevice(const uint8_t i2c_address = kDefaultI2cAddress, TwoWire& wire = Wire);
+
+  explicit I2cDevice(TwoWire& wire) : I2cDevice(kDefaultI2cAddress, wire) {
+  }
 
   /**
    * @brief 初始化函数
@@ -36,8 +39,8 @@ class I2cDevice {
   I2cDevice(const I2cDevice&) = delete;
   I2cDevice& operator=(const I2cDevice&) = delete;
 
-  TwoWire& wire_ = Wire;
   const uint8_t i2c_address_ = kDefaultI2cAddress;
+  TwoWire& wire_ = Wire;
 };
 }  // namespace emakefun
 #endif

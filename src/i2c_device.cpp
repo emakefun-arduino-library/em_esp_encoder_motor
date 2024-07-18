@@ -8,7 +8,7 @@ enum MemoryAddress : uint8_t {
 
 namespace emakefun {
 
-I2cDevice::I2cDevice(TwoWire& wire, const uint8_t i2c_address) : wire_(wire), i2c_address_(i2c_address) {
+I2cDevice::I2cDevice(const uint8_t i2c_address, TwoWire& wire) : i2c_address_(i2c_address), wire_(wire) {
   // do somethings
 }
 
