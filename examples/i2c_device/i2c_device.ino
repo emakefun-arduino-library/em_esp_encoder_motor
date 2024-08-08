@@ -22,6 +22,7 @@ void InfiniteLoopOnFailure(const char* function, const uint32_t line_number) {
 void setup() {
   Serial.begin(115200);
   Serial.println(F("setup"));
+  Serial.println(String(F("i2c device lib version: ")) + emakefun::I2cDevice::Version());
 
   Wire.begin();
 

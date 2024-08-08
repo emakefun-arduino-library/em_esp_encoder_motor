@@ -3,12 +3,16 @@
 #ifndef EMAKEFUN_I2C_DEVICE_H_
 #define EMAKEFUN_I2C_DEVICE_H_
 
+#include <WString.h>
 #include <Wire.h>
 #include <stdint.h>
 
 namespace emakefun {
 class I2cDevice {
  public:
+  static constexpr uint32_t kVersionMajor = 1;
+  static constexpr uint32_t kVersionMinor = 0;
+  static constexpr uint32_t kVersionPatch = 0;
   static constexpr uint8_t kDefaultI2cAddress = 0x00;
 
   /**
@@ -25,6 +29,10 @@ class I2cDevice {
     kInvalidParameter = 6,                    /**< 6：参数错误 */
     kUnknownError = 7,                        /**< 7：未知错误*/
   };
+
+  static String Version() {
+    return String(kVersionMajor) + '.' + kVersionMinor + '.' + kVersionPatch;
+  }
 
   explicit I2cDevice(const uint8_t i2c_address = kDefaultI2cAddress, TwoWire& wire = Wire);
 
