@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include <thread>
 
 #include "utils/motor_driver.h"
 
@@ -47,6 +48,11 @@ class EncoderMotor {
   void RunSpeed(const int16_t rpm);
 
   /**
+   * @brief Stop motor.
+   */
+  void Stop();
+
+  /**
    * @brief Get encoder pulse count.
    *
    * @return int32_t Encoder pulses
@@ -60,10 +66,7 @@ class EncoderMotor {
    *
    * @return The current speed of the motor in RPM.
    */
-  int32_t Speed() const {
-    return current_speed_;
-  }
-
+  int32_t Speed() const;
   /**
    * @brief Get the PWM duty cycle of the motor driver.
    *
@@ -71,9 +74,7 @@ class EncoderMotor {
    *
    * @return The PWM duty cycle of the motor driver.
    */
-  int16_t PwmDuty() const {
-    return motor_driver_.Duty();
-  }
+  int16_t PwmDuty() const;
 
  private:
   static void OnPinAFalling(void* self);
@@ -104,6 +105,7 @@ class EncoderMotor {
     float max_integral = 0.0;
   };
 
+  mutable std::mutex mutex_;
   MotorDriver motor_driver_;
   const uint8_t a_pin_ = 0;
   const uint8_t b_pin_ = 0;
@@ -113,12 +115,12 @@ class EncoderMotor {
   bool active_ = false;
   Mode mode_ = kNoneMode;
   int32_t previous_pulse_count_ = 0;
-  int64_t current_pulse_count_ = 0;
+  std::atomic<int64_t> current_pulse_count_ = 0;
   uint64_t last_update_speed_time_ = 0;
   uint64_t last_update_pwm_time_ = 0;
 
-  volatile int32_t current_speed_ = 0;
+  std::atomic<int32_t> current_speed_ = 0;
 
   float target_speed_ = 0.0;
 };
-}  // namespace em
+}  // namespace emf

@@ -41,6 +41,11 @@ EncoderMotor::EncoderMotor(const uint8_t pos_pin,
 }
 
 void EncoderMotor::Init() {
+  std::lock_guard<std::mutex> l(mutex_);
+  if (active_) {
+    return;
+  }
+
   motor_driver_.Init();
 
   pinMode(a_pin_, INPUT_PULLUP);
@@ -52,17 +57,34 @@ void EncoderMotor::Init() {
 }
 
 void EncoderMotor::RunPwm(const int16_t duty) {
+  std::lock_guard<std::mutex> l(mutex_);
   mode_ = kPwmMode;
   motor_driver_.Duty(duty);
 }
 
 void EncoderMotor::RunSpeed(const int16_t rpm) {
+  std::lock_guard<std::mutex> l(mutex_);
   mode_ = kSpeedMode;
   target_speed_ = rpm;
 }
 
+void EncoderMotor::Stop() {
+  std::lock_guard<std::mutex> l(mutex_);
+  mode_ = kNoneMode;
+  motor_driver_.Break();
+}
+
 int64_t EncoderMotor::EncoderPulseCount() const {
   return current_pulse_count_;
+}
+
+int32_t EncoderMotor::Speed() const {
+  return current_speed_;
+}
+
+int16_t EncoderMotor::PwmDuty() const {
+  std::lock_guard<std::mutex> l(mutex_);
+  return motor_driver_.Duty();
 }
 
 void EncoderMotor::OnPinAFalling(void* self) {
@@ -74,7 +96,7 @@ void EncoderMotor::Loop(void* self) {
 }
 
 void EncoderMotor::OnPinAFalling() {
-  if (digitalRead(b_pin_) == b_level_at_a_falling_edge_) {
+  if (gpio_get_level(static_cast<gpio_num_t>(b_pin_)) == b_level_at_a_falling_edge_) {
     ++current_pulse_count_;
   } else {
     --current_pulse_count_;
@@ -84,7 +106,12 @@ void EncoderMotor::OnPinAFalling() {
 void EncoderMotor::Loop() {
   while (active_) {
     CalculateSpeed();
-    switch (mode_) {
+
+    mutex_.lock();
+    const auto mode = mode_;
+    mutex_.unlock();
+
+    switch (mode) {
       case kSpeedMode: {
         UpdatePwmForSpeed();
         break;
@@ -93,11 +120,18 @@ void EncoderMotor::Loop() {
         break;
       }
     }
+
+    delay(5);
   }
 }
 
 void EncoderMotor::CalculateSpeed() {
   const uint64_t now = esp_timer_get_time() / 1000;
+  if (last_update_speed_time_ == 0) {
+    last_update_speed_time_ = now;
+    return;
+  }
+
   const double duration = now - last_update_speed_time_;
 
   if (duration < 20.0) {
@@ -111,7 +145,16 @@ void EncoderMotor::CalculateSpeed() {
 }
 
 void EncoderMotor::UpdatePwmForSpeed() {
+  std::lock_guard<std::mutex> l(mutex_);
+  if (mode_ != kSpeedMode) {
+    return;
+  }
+
   const uint64_t now = esp_timer_get_time() / 1000;
+  if (last_update_pwm_time_ == 0) {
+    last_update_pwm_time_ = now;
+    return;
+  }
 
   if (now - last_update_pwm_time_ < 20) {
     return;
@@ -124,4 +167,4 @@ void EncoderMotor::UpdatePwmForSpeed() {
   last_update_pwm_time_ = now;
 }
 
-}  // namespace em
+}  // namespace emf
