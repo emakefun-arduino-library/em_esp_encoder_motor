@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['i2cdevice_0',['I2cDevice',['../classemakefun_1_1_i2c_device.html',1,'emakefun']]]
+  ['encodermotor_0',['EncoderMotor',['../classem_1_1_encoder_motor.html',1,'em']]]
 ];

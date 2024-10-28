@@ -1,8 +1,9 @@
 @INCLUDE_PATH  = doxygen
 @INCLUDE = base.cfg
-PROJECT_NAME     = "Emakefun I2C Device"
+PROJECT_NAME     = "Emakefun ESP Encoder Motor Library"
 PROJECT_NUMBER   = 1.0
-ENABLED_SECTIONS = Chinese
-OUTPUT_LANGUAGE  = Chinese
+ENABLED_SECTIONS = English
+OUTPUT_LANGUAGE  = English
 INPUT            = src \
-                   examples/i2c_device/i2c_device.ino
+                   examples/run_speed/run_speed.ino \
+                   examples/run_pwm/run_pwm.ino

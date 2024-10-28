@@ -23,15 +23,13 @@
  @licend  The above is the entire license notice for the JavaScript code in this file
 */
 var menudata={children:[
-{text:"首页",url:"index.html"},
-{text:"类",url:"annotated.html",children:[
-{text:"类列表",url:"annotated.html"},
-{text:"类索引",url:"classes.html"},
-{text:"类成员",url:"functions.html",children:[
-{text:"全部",url:"functions.html"},
-{text:"函数",url:"functions_func.html"},
-{text:"枚举",url:"functions_enum.html"},
-{text:"枚举值",url:"functions_eval.html"}]}]},
-{text:"文件",url:"files.html",children:[
-{text:"文件列表",url:"files.html"}]},
-{text:"示例",url:"examples.html"}]}
+{text:"Main Page",url:"index.html"},
+{text:"Classes",url:"annotated.html",children:[
+{text:"Class List",url:"annotated.html"},
+{text:"Class Index",url:"classes.html"},
+{text:"Class Members",url:"functions.html",children:[
+{text:"All",url:"functions.html"},
+{text:"Functions",url:"functions_func.html"}]}]},
+{text:"Files",url:"files.html",children:[
+{text:"File List",url:"files.html"}]},
+{text:"Examples",url:"examples.html"}]}
