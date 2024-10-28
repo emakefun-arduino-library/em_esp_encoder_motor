@@ -64,10 +64,15 @@ void EncoderMotor::RunPwm(const int16_t duty) {
 
 void EncoderMotor::RunSpeed(const int16_t rpm) {
   std::lock_guard<std::mutex> l(mutex_);
+  if (target_speed_ == rpm && mode_ == kSpeedMode) {
+    return;
+  }
+
   mode_ = kSpeedMode;
   target_speed_ = rpm;
+
   if (fabs(pid_speed_.i) > __FLT_EPSILON__) {
-    pid_speed_.integral = motor_driver_.GetPwm() / pid_speed_.i;
+    pid_speed_.integral = motor_driver_.Duty() / pid_speed_.i;
   }
 }
 
