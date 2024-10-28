@@ -7,7 +7,7 @@
 #include "driver/gpio.h"
 #include "driver/ledc.h"
 
-namespace em {
+namespace emf {
 
 namespace {
 constexpr float kDefaultPositionP = 20.0;

@@ -1,4 +1,4 @@
-# Encoder ESP Encoder Motor Library
+# Emakefun ESP Encoder Motor Library
 
 ## Page
 

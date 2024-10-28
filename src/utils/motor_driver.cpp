@@ -2,7 +2,7 @@
 
 #include <Arduino.h>
 
-namespace em {
+namespace emf {
 
 MotorDriver::MotorDriver(const uint8_t pos_pin, const uint8_t neg_pin) : pos_pin_(pos_pin), neg_pin_(neg_pin) {
 }

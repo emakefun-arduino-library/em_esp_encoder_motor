@@ -4,7 +4,7 @@
 
 #include "utils/motor_driver.h"
 
-namespace em {
+namespace emf {
 class EncoderMotor {
  public:
   /**

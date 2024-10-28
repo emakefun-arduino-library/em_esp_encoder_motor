@@ -5,10 +5,10 @@
 #include "esp_encoder_motor.h"
 
 namespace {
-auto const encoder_motor_0 = new em::EncoderMotor(GPIO_NUM_27, GPIO_NUM_13, GPIO_NUM_19, GPIO_NUM_18, 12, 90, true);
-auto const encoder_motor_1 = new em::EncoderMotor(GPIO_NUM_4, GPIO_NUM_2, GPIO_NUM_25, GPIO_NUM_23, 12, 90, true);
-auto const encoder_motor_2 = new em::EncoderMotor(GPIO_NUM_15, GPIO_NUM_14, GPIO_NUM_34, GPIO_NUM_35, 12, 90, true);
-auto const encoder_motor_3 = new em::EncoderMotor(GPIO_NUM_17, GPIO_NUM_12, GPIO_NUM_39, GPIO_NUM_36, 12, 90, true);
+auto const encoder_motor_0 = new emf::EncoderMotor(GPIO_NUM_27, GPIO_NUM_13, GPIO_NUM_19, GPIO_NUM_18, 12, 90, true);
+auto const encoder_motor_1 = new emf::EncoderMotor(GPIO_NUM_4, GPIO_NUM_2, GPIO_NUM_25, GPIO_NUM_23, 12, 90, true);
+auto const encoder_motor_2 = new emf::EncoderMotor(GPIO_NUM_15, GPIO_NUM_14, GPIO_NUM_34, GPIO_NUM_35, 12, 90, true);
+auto const encoder_motor_3 = new emf::EncoderMotor(GPIO_NUM_17, GPIO_NUM_12, GPIO_NUM_39, GPIO_NUM_36, 12, 90, true);
 }  // namespace
 
 void setup() {

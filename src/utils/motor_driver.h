@@ -3,7 +3,7 @@
 #include <cmath>
 #include <cstdint>
 
-namespace em {
+namespace emf {
 
 class MotorDriver {
  public:

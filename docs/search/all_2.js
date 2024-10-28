@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pwmduty_0',['PwmDuty',['../classem_1_1_encoder_motor.html#a2b3c2fff560cf81991dc98c58023d3e5',1,'em::EncoderMotor']]]
+  ['pwmduty_0',['PwmDuty',['../classemf_1_1_encoder_motor.html#ad9345499fc3fae2b52cc3f6596ee8af0',1,'emf::EncoderMotor']]]
 ];
