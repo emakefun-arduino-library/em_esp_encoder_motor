@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Emakefun ESP Encoder Motor Library: run_pwm.ino</title>
+<title>Emakefun ESP Encoder Motor Library: forward_stop_backward.ino</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -84,11 +84,11 @@ $(function(){ initResizable(false); });
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">run_pwm.ino</div></div>
+  <div class="headertitle"><div class="title">forward_stop_backward.ino</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><span class="comment">/**</span></div>
-<div class="line"><span class="comment"> * @example run_pwm.ino</span></div>
+<div class="line"><span class="comment"> * @example forward_stop_backward.ino</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &quot;esp_encoder_motor.h&quot;</span></div>
@@ -98,6 +98,11 @@ $(function(){ initResizable(false); });
 <div class="line"><span class="keyword">auto</span> <span class="keyword">const</span> g_encoder_motor_1 = <span class="keyword">new</span> <a class="code hl_class" href="classemf_1_1_encoder_motor.html">emf::EncoderMotor</a>(GPIO_NUM_4, GPIO_NUM_2, GPIO_NUM_25, GPIO_NUM_23, 12, 90, <span class="keyword">true</span>);</div>
 <div class="line"><span class="keyword">auto</span> <span class="keyword">const</span> g_encoder_motor_2 = <span class="keyword">new</span> <a class="code hl_class" href="classemf_1_1_encoder_motor.html">emf::EncoderMotor</a>(GPIO_NUM_15, GPIO_NUM_14, GPIO_NUM_34, GPIO_NUM_35, 12, 90, <span class="keyword">true</span>);</div>
 <div class="line"><span class="keyword">auto</span> <span class="keyword">const</span> g_encoder_motor_3 = <span class="keyword">new</span> <a class="code hl_class" href="classemf_1_1_encoder_motor.html">emf::EncoderMotor</a>(GPIO_NUM_17, GPIO_NUM_12, GPIO_NUM_39, GPIO_NUM_36, 12, 90, <span class="keyword">true</span>);</div>
+<div class="line"><span class="keyword">enum</span> State {</div>
+<div class="line">  kNone,</div>
+<div class="line">  kForward,</div>
+<div class="line">  kBackward,</div>
+<div class="line">} g_state = kForward;</div>
 <div class="line">}  <span class="comment">// namespace</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> setup() {</div>
@@ -111,17 +116,48 @@ $(function(){ initResizable(false); });
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> loop() {</div>
-<div class="line">  <span class="keyword">const</span> int16_t pwm_duty = 4095;</div>
+<div class="line">  <span class="keyword">const</span> int16_t speed_rpm = 100;</div>
+<div class="line">  <span class="keyword">static</span> <span class="keyword">auto</span> s_state_changed_time = millis();</div>
 <div class="line"> </div>
-<div class="line">  g_encoder_motor_0-&gt;RunPwm(pwm_duty);</div>
-<div class="line">  g_encoder_motor_1-&gt;RunPwm(pwm_duty);</div>
-<div class="line">  g_encoder_motor_2-&gt;RunPwm(pwm_duty);</div>
-<div class="line">  g_encoder_motor_3-&gt;RunPwm(pwm_duty);</div>
+<div class="line">  <span class="keywordflow">switch</span> (g_state) {</div>
+<div class="line">    <span class="keywordflow">case</span> kNone:</div>
+<div class="line">      g_encoder_motor_0-&gt;Stop();</div>
+<div class="line">      g_encoder_motor_1-&gt;Stop();</div>
+<div class="line">      g_encoder_motor_2-&gt;Stop();</div>
+<div class="line">      g_encoder_motor_3-&gt;Stop();</div>
+<div class="line">      <span class="keywordflow">if</span> (millis() - s_state_changed_time &gt; 2000) {</div>
+<div class="line">        g_state = kForward;</div>
+<div class="line">        s_state_changed_time = millis();</div>
+<div class="line">      }</div>
+<div class="line">      <span class="keywordflow">break</span>;</div>
+<div class="line">    <span class="keywordflow">case</span> kForward:</div>
+<div class="line">      g_encoder_motor_0-&gt;RunSpeed(speed_rpm);</div>
+<div class="line">      g_encoder_motor_1-&gt;RunSpeed(speed_rpm);</div>
+<div class="line">      g_encoder_motor_2-&gt;RunSpeed(speed_rpm);</div>
+<div class="line">      g_encoder_motor_3-&gt;RunSpeed(speed_rpm);</div>
+<div class="line">      <span class="keywordflow">if</span> (millis() - s_state_changed_time &gt; 2000) {</div>
+<div class="line">        g_state = kBackward;</div>
+<div class="line">        s_state_changed_time = millis();</div>
+<div class="line">      }</div>
+<div class="line">      <span class="keywordflow">break</span>;</div>
+<div class="line">    <span class="keywordflow">case</span> kBackward:</div>
+<div class="line">      g_encoder_motor_0-&gt;RunSpeed(-speed_rpm);</div>
+<div class="line">      g_encoder_motor_1-&gt;RunSpeed(-speed_rpm);</div>
+<div class="line">      g_encoder_motor_2-&gt;RunSpeed(-speed_rpm);</div>
+<div class="line">      g_encoder_motor_3-&gt;RunSpeed(-speed_rpm);</div>
+<div class="line">      <span class="keywordflow">if</span> (millis() - s_state_changed_time &gt; 2000) {</div>
+<div class="line">        g_state = kNone;</div>
+<div class="line">        s_state_changed_time = millis();</div>
+<div class="line">      }</div>
+<div class="line">      <span class="keywordflow">break</span>;</div>
+<div class="line">    <span class="keywordflow">default</span>:</div>
+<div class="line">      <span class="keywordflow">break</span>;</div>
+<div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">  printf(<span class="stringliteral">&quot;target pwm duty: %5&quot;</span> PRIi16 <span class="stringliteral">&quot;, speed(RPM):[%4&quot;</span> PRId32 <span class="stringliteral">&quot;, %4&quot;</span> PRId32 <span class="stringliteral">&quot;, %4&quot;</span> PRId32 <span class="stringliteral">&quot;, %4&quot;</span> PRId32</div>
+<div class="line">  printf(<span class="stringliteral">&quot;target speed(RMP): %4&quot;</span> PRIi16 <span class="stringliteral">&quot;, speed(RPM):[%4&quot;</span> PRId32 <span class="stringliteral">&quot;, %4&quot;</span> PRId32 <span class="stringliteral">&quot;, %4&quot;</span> PRId32 <span class="stringliteral">&quot;, %4&quot;</span> PRId32</div>
 <div class="line">         <span class="stringliteral">&quot;], pwm duty:[%5 &quot;</span> PRIi16 <span class="stringliteral">&quot;, %5&quot;</span> PRIi16 <span class="stringliteral">&quot;, %5&quot;</span> PRIi16 <span class="stringliteral">&quot;, %5&quot;</span> PRIi16 <span class="stringliteral">&quot;], pulse counts:[%&quot;</span> PRId64 <span class="stringliteral">&quot;, %&quot;</span> PRId64</div>
 <div class="line">         <span class="stringliteral">&quot;, %&quot;</span> PRId64 <span class="stringliteral">&quot;, %&quot;</span> PRId64 <span class="stringliteral">&quot;]\n&quot;</span>,</div>
-<div class="line">         pwm_duty,</div>
+<div class="line">         speed_rpm,</div>
 <div class="line">         g_encoder_motor_0-&gt;Speed(),</div>
 <div class="line">         g_encoder_motor_1-&gt;Speed(),</div>
 <div class="line">         g_encoder_motor_2-&gt;Speed(),</div>

@@ -6,4 +6,5 @@ ENABLED_SECTIONS = English
 OUTPUT_LANGUAGE  = English
 INPUT            = src \
                    examples/run_speed/run_speed.ino \
-                   examples/run_pwm/run_pwm.ino
+                   examples/run_pwm/run_pwm.ino \ 
+                   examples/forward_stop_backward/forward_stop_backward.ino

@@ -17,7 +17,8 @@ class EncoderMotor {
    * @param[in] b_pin Encoder channel B pin
    * @param[in] ppr Encoder pulses per revolution
    * @param[in] ratio Gear reduction ratio
-   * @param[in] is_a_head_ff  Indicates the level of signal B at the falling edge of signal A when motor is in forward rotation
+   * @param[in] is_a_head_in_forward  Indicates the level of signal B at the falling edge of signal A when motor is in forward
+   * rotation
    */
   EncoderMotor(const uint8_t pos_pin,
                const uint8_t neg_pin,
@@ -25,7 +26,7 @@ class EncoderMotor {
                const uint8_t b_pin,
                const uint32_t ppr,
                const uint32_t reduction_ration,
-               const bool is_a_head_ff);
+               const bool is_a_head_in_forward);
 
   /**
    * @brief Initialize motor settings.

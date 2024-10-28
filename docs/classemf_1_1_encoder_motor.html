@@ -97,9 +97,9 @@ $(function(){ initResizable(false); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3deff3bda9ca620f03ddcb0e36b5cde0" id="r_a3deff3bda9ca620f03ddcb0e36b5cde0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3deff3bda9ca620f03ddcb0e36b5cde0">EncoderMotor</a> (const uint8_t pos_pin, const uint8_t neg_pin, const uint8_t a_pin, const uint8_t b_pin, const uint32_t ppr, const uint32_t reduction_ration, const bool is_a_head_ff)</td></tr>
-<tr class="memdesc:a3deff3bda9ca620f03ddcb0e36b5cde0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <br /></td></tr>
-<tr class="separator:a3deff3bda9ca620f03ddcb0e36b5cde0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c41a62cac2c9bdc3db1f0fd9a82c22c" id="r_a5c41a62cac2c9bdc3db1f0fd9a82c22c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c41a62cac2c9bdc3db1f0fd9a82c22c">EncoderMotor</a> (const uint8_t pos_pin, const uint8_t neg_pin, const uint8_t a_pin, const uint8_t b_pin, const uint32_t ppr, const uint32_t reduction_ration, const bool is_a_head_in_forward)</td></tr>
+<tr class="memdesc:a5c41a62cac2c9bdc3db1f0fd9a82c22c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <br /></td></tr>
+<tr class="separator:a5c41a62cac2c9bdc3db1f0fd9a82c22c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6cff9102e27a3c2b71ddb37b5124b7c6" id="r_a6cff9102e27a3c2b71ddb37b5124b7c6"><td class="memItemLeft" align="right" valign="top"><a id="a6cff9102e27a3c2b71ddb37b5124b7c6" name="a6cff9102e27a3c2b71ddb37b5124b7c6"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Init</b> ()</td></tr>
 <tr class="memdesc:a6cff9102e27a3c2b71ddb37b5124b7c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize motor settings. <br /></td></tr>
@@ -125,11 +125,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
 <tr class="separator:ad9345499fc3fae2b52cc3f6596ee8af0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><dl class="section examples"><dt>Examples</dt><dd><a class="el" href="run_pwm_8ino-example.html#_a0">run_pwm.ino</a>, and <a class="el" href="run_speed_8ino-example.html#_a0">run_speed.ino</a>.</dd>
+<div class="textblock"><dl class="section examples"><dt>Examples</dt><dd><a class="el" href="forward_stop_backward_8ino-example.html#_a0">forward_stop_backward.ino</a>, <a class="el" href="run_pwm_8ino-example.html#_a0">run_pwm.ino</a>, and <a class="el" href="run_speed_8ino-example.html#_a0">run_speed.ino</a>.</dd>
 </dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a3deff3bda9ca620f03ddcb0e36b5cde0" name="a3deff3bda9ca620f03ddcb0e36b5cde0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3deff3bda9ca620f03ddcb0e36b5cde0">&#9670;&#160;</a></span>EncoderMotor()</h2>
+<a id="a5c41a62cac2c9bdc3db1f0fd9a82c22c" name="a5c41a62cac2c9bdc3db1f0fd9a82c22c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c41a62cac2c9bdc3db1f0fd9a82c22c">&#9670;&#160;</a></span>EncoderMotor()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -167,7 +167,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const bool</td>          <td class="paramname"><span class="paramname"><em>is_a_head_ff</em></span>&#160;)</td>
+          <td class="paramtype">const bool</td>          <td class="paramname"><span class="paramname"><em>is_a_head_in_forward</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -181,7 +181,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">b_pin</td><td>Encoder channel B pin </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">ppr</td><td>Encoder pulses per revolution </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">ratio</td><td>Gear reduction ratio </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">is_a_head_ff</td><td>Indicates the level of signal B at the falling edge of signal A when motor is in forward rotation </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">is_a_head_in_forward</td><td>Indicates the level of signal B at the falling edge of signal A when motor is in forward rotation </td></tr>
   </table>
   </dd>
 </dl>

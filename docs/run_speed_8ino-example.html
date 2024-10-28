@@ -94,46 +94,46 @@ $(function(){ initResizable(false); });
 <div class="line"><span class="preprocessor">#include &quot;esp_encoder_motor.h&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span>{</div>
-<div class="line"><span class="keyword">auto</span> <span class="keyword">const</span> encoder_motor_0 = <span class="keyword">new</span> <a id="_a0" name="_a0"></a><a class="code hl_class" href="classemf_1_1_encoder_motor.html">emf::EncoderMotor</a>(GPIO_NUM_27, GPIO_NUM_13, GPIO_NUM_19, GPIO_NUM_18, 12, 90, <span class="keyword">true</span>);</div>
-<div class="line"><span class="keyword">auto</span> <span class="keyword">const</span> encoder_motor_1 = <span class="keyword">new</span> <a class="code hl_class" href="classemf_1_1_encoder_motor.html">emf::EncoderMotor</a>(GPIO_NUM_4, GPIO_NUM_2, GPIO_NUM_25, GPIO_NUM_23, 12, 90, <span class="keyword">true</span>);</div>
-<div class="line"><span class="keyword">auto</span> <span class="keyword">const</span> encoder_motor_2 = <span class="keyword">new</span> <a class="code hl_class" href="classemf_1_1_encoder_motor.html">emf::EncoderMotor</a>(GPIO_NUM_15, GPIO_NUM_14, GPIO_NUM_34, GPIO_NUM_35, 12, 90, <span class="keyword">true</span>);</div>
-<div class="line"><span class="keyword">auto</span> <span class="keyword">const</span> encoder_motor_3 = <span class="keyword">new</span> <a class="code hl_class" href="classemf_1_1_encoder_motor.html">emf::EncoderMotor</a>(GPIO_NUM_17, GPIO_NUM_12, GPIO_NUM_39, GPIO_NUM_36, 12, 90, <span class="keyword">true</span>);</div>
+<div class="line"><span class="keyword">auto</span> <span class="keyword">const</span> g_encoder_motor_0 = <span class="keyword">new</span> <a id="_a0" name="_a0"></a><a class="code hl_class" href="classemf_1_1_encoder_motor.html">emf::EncoderMotor</a>(GPIO_NUM_27, GPIO_NUM_13, GPIO_NUM_19, GPIO_NUM_18, 12, 90, <span class="keyword">true</span>);</div>
+<div class="line"><span class="keyword">auto</span> <span class="keyword">const</span> g_encoder_motor_1 = <span class="keyword">new</span> <a class="code hl_class" href="classemf_1_1_encoder_motor.html">emf::EncoderMotor</a>(GPIO_NUM_4, GPIO_NUM_2, GPIO_NUM_25, GPIO_NUM_23, 12, 90, <span class="keyword">true</span>);</div>
+<div class="line"><span class="keyword">auto</span> <span class="keyword">const</span> g_encoder_motor_2 = <span class="keyword">new</span> <a class="code hl_class" href="classemf_1_1_encoder_motor.html">emf::EncoderMotor</a>(GPIO_NUM_15, GPIO_NUM_14, GPIO_NUM_34, GPIO_NUM_35, 12, 90, <span class="keyword">true</span>);</div>
+<div class="line"><span class="keyword">auto</span> <span class="keyword">const</span> g_encoder_motor_3 = <span class="keyword">new</span> <a class="code hl_class" href="classemf_1_1_encoder_motor.html">emf::EncoderMotor</a>(GPIO_NUM_17, GPIO_NUM_12, GPIO_NUM_39, GPIO_NUM_36, 12, 90, <span class="keyword">true</span>);</div>
 <div class="line">}  <span class="comment">// namespace</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> setup() {</div>
 <div class="line">  Serial.begin(115200);</div>
 <div class="line">  printf(<span class="stringliteral">&quot;setup\n&quot;</span>);</div>
-<div class="line">  encoder_motor_0-&gt;Init();</div>
-<div class="line">  encoder_motor_1-&gt;Init();</div>
-<div class="line">  encoder_motor_2-&gt;Init();</div>
-<div class="line">  encoder_motor_3-&gt;Init();</div>
+<div class="line">  g_encoder_motor_0-&gt;Init();</div>
+<div class="line">  g_encoder_motor_1-&gt;Init();</div>
+<div class="line">  g_encoder_motor_2-&gt;Init();</div>
+<div class="line">  g_encoder_motor_3-&gt;Init();</div>
 <div class="line">  printf(<span class="stringliteral">&quot;setup done\n&quot;</span>);</div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> loop() {</div>
 <div class="line">  <span class="keyword">const</span> int16_t speed_rpm = 100;</div>
 <div class="line"> </div>
-<div class="line">  encoder_motor_0-&gt;RunSpeed(speed_rpm);</div>
-<div class="line">  encoder_motor_1-&gt;RunSpeed(speed_rpm);</div>
-<div class="line">  encoder_motor_2-&gt;RunSpeed(speed_rpm);</div>
-<div class="line">  encoder_motor_3-&gt;RunSpeed(speed_rpm);</div>
+<div class="line">  g_encoder_motor_0-&gt;RunSpeed(speed_rpm);</div>
+<div class="line">  g_encoder_motor_1-&gt;RunSpeed(speed_rpm);</div>
+<div class="line">  g_encoder_motor_2-&gt;RunSpeed(speed_rpm);</div>
+<div class="line">  g_encoder_motor_3-&gt;RunSpeed(speed_rpm);</div>
 <div class="line"> </div>
 <div class="line">  printf(<span class="stringliteral">&quot;target speed(RMP): %4&quot;</span> PRIi16 <span class="stringliteral">&quot;, speed(RPM):[%4&quot;</span> PRId32 <span class="stringliteral">&quot;, %4&quot;</span> PRId32 <span class="stringliteral">&quot;, %4&quot;</span> PRId32 <span class="stringliteral">&quot;, %4&quot;</span> PRId32</div>
 <div class="line">         <span class="stringliteral">&quot;], pwm duty:[%5 &quot;</span> PRIi16 <span class="stringliteral">&quot;, %5&quot;</span> PRIi16 <span class="stringliteral">&quot;, %5&quot;</span> PRIi16 <span class="stringliteral">&quot;, %5&quot;</span> PRIi16 <span class="stringliteral">&quot;], pulse counts:[%&quot;</span> PRId64 <span class="stringliteral">&quot;, %&quot;</span> PRId64</div>
 <div class="line">         <span class="stringliteral">&quot;, %&quot;</span> PRId64 <span class="stringliteral">&quot;, %&quot;</span> PRId64 <span class="stringliteral">&quot;]\n&quot;</span>,</div>
 <div class="line">         speed_rpm,</div>
-<div class="line">         encoder_motor_0-&gt;Speed(),</div>
-<div class="line">         encoder_motor_1-&gt;Speed(),</div>
-<div class="line">         encoder_motor_2-&gt;Speed(),</div>
-<div class="line">         encoder_motor_3-&gt;Speed(),</div>
-<div class="line">         encoder_motor_0-&gt;PwmDuty(),</div>
-<div class="line">         encoder_motor_1-&gt;PwmDuty(),</div>
-<div class="line">         encoder_motor_2-&gt;PwmDuty(),</div>
-<div class="line">         encoder_motor_3-&gt;PwmDuty(),</div>
-<div class="line">         encoder_motor_0-&gt;EncoderPulseCount(),</div>
-<div class="line">         encoder_motor_1-&gt;EncoderPulseCount(),</div>
-<div class="line">         encoder_motor_2-&gt;EncoderPulseCount(),</div>
-<div class="line">         encoder_motor_3-&gt;EncoderPulseCount());</div>
+<div class="line">         g_encoder_motor_0-&gt;Speed(),</div>
+<div class="line">         g_encoder_motor_1-&gt;Speed(),</div>
+<div class="line">         g_encoder_motor_2-&gt;Speed(),</div>
+<div class="line">         g_encoder_motor_3-&gt;Speed(),</div>
+<div class="line">         g_encoder_motor_0-&gt;PwmDuty(),</div>
+<div class="line">         g_encoder_motor_1-&gt;PwmDuty(),</div>
+<div class="line">         g_encoder_motor_2-&gt;PwmDuty(),</div>
+<div class="line">         g_encoder_motor_3-&gt;PwmDuty(),</div>
+<div class="line">         g_encoder_motor_0-&gt;EncoderPulseCount(),</div>
+<div class="line">         g_encoder_motor_1-&gt;EncoderPulseCount(),</div>
+<div class="line">         g_encoder_motor_2-&gt;EncoderPulseCount(),</div>
+<div class="line">         g_encoder_motor_3-&gt;EncoderPulseCount());</div>
 <div class="line"> </div>
 <div class="line">  delay(100);</div>
 <div class="line">}</div>

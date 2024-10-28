@@ -24,12 +24,12 @@ EncoderMotor::EncoderMotor(const uint8_t pos_pin,
                            const uint8_t b_pin,
                            const uint32_t ppr,
                            const uint32_t reduction_ration,
-                           const bool is_a_head_ff)
+                           const bool is_a_head_in_forward)
     : a_pin_(a_pin),
       b_pin_(b_pin),
       motor_driver_(pos_pin, neg_pin),
       total_ppr_(ppr * reduction_ration),
-      b_level_at_a_falling_edge_(is_a_head_ff ? HIGH : LOW) {
+      b_level_at_a_falling_edge_(is_a_head_in_forward ? HIGH : LOW) {
   //   pid_position_.p = kDefaultPositionP;
   //   pid_position_.i = kDefaultPositionI;
   //   pid_position_.d = kDefaultPositionD;
@@ -66,12 +66,16 @@ void EncoderMotor::RunSpeed(const int16_t rpm) {
   std::lock_guard<std::mutex> l(mutex_);
   mode_ = kSpeedMode;
   target_speed_ = rpm;
+  if (fabs(pid_speed_.i) > __FLT_EPSILON__) {
+    pid_speed_.integral = motor_driver_.GetPwm() / pid_speed_.i;
+  }
 }
 
 void EncoderMotor::Stop() {
   std::lock_guard<std::mutex> l(mutex_);
   mode_ = kNoneMode;
   motor_driver_.Break();
+  pid_speed_.integral = 0;
 }
 
 int64_t EncoderMotor::EncoderPulseCount() const {
