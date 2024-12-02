@@ -145,37 +145,37 @@ $(function(){initNavTree('run_pwm_8ino-example.html',''); initResizable(true); }
 <div class="line"><span class="keywordtype">void</span> setup() {</div>
 <div class="line">  Serial.begin(115200);</div>
 <div class="line">  printf(<span class="stringliteral">&quot;setting up\n&quot;</span>);</div>
-<div class="line">  g_encoder_motor_0-&gt;Init();</div>
-<div class="line">  g_encoder_motor_1-&gt;Init();</div>
-<div class="line">  g_encoder_motor_2-&gt;Init();</div>
-<div class="line">  g_encoder_motor_3-&gt;Init();</div>
+<div class="line">  g_encoder_motor_0.Init();</div>
+<div class="line">  g_encoder_motor_1.Init();</div>
+<div class="line">  g_encoder_motor_2.Init();</div>
+<div class="line">  g_encoder_motor_3.Init();</div>
 <div class="line">  printf(<span class="stringliteral">&quot;setup completed\n&quot;</span>);</div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> loop() {</div>
 <div class="line">  <span class="keyword">const</span> int16_t pwm_duty = 4095;</div>
 <div class="line"> </div>
-<div class="line">  g_encoder_motor_0-&gt;RunPwmDuty(pwm_duty);</div>
-<div class="line">  g_encoder_motor_1-&gt;RunPwmDuty(pwm_duty);</div>
-<div class="line">  g_encoder_motor_2-&gt;RunPwmDuty(pwm_duty);</div>
-<div class="line">  g_encoder_motor_3-&gt;RunPwmDuty(pwm_duty);</div>
+<div class="line">  g_encoder_motor_0.RunPwmDuty(pwm_duty);</div>
+<div class="line">  g_encoder_motor_1.RunPwmDuty(pwm_duty);</div>
+<div class="line">  g_encoder_motor_2.RunPwmDuty(pwm_duty);</div>
+<div class="line">  g_encoder_motor_3.RunPwmDuty(pwm_duty);</div>
 <div class="line"> </div>
 <div class="line">  printf(<span class="stringliteral">&quot;target pwm duty: %5&quot;</span> PRIi16 <span class="stringliteral">&quot;, speed(RPM):[%4&quot;</span> PRId32 <span class="stringliteral">&quot;, %4&quot;</span> PRId32 <span class="stringliteral">&quot;, %4&quot;</span> PRId32 <span class="stringliteral">&quot;, %4&quot;</span> PRId32</div>
 <div class="line">         <span class="stringliteral">&quot;], pwm duty:[%5 &quot;</span> PRIi16 <span class="stringliteral">&quot;, %5&quot;</span> PRIi16 <span class="stringliteral">&quot;, %5&quot;</span> PRIi16 <span class="stringliteral">&quot;, %5&quot;</span> PRIi16 <span class="stringliteral">&quot;], pulse counts:[%&quot;</span> PRId64 <span class="stringliteral">&quot;, %&quot;</span> PRId64</div>
 <div class="line">         <span class="stringliteral">&quot;, %&quot;</span> PRId64 <span class="stringliteral">&quot;, %&quot;</span> PRId64 <span class="stringliteral">&quot;]\n&quot;</span>,</div>
 <div class="line">         pwm_duty,</div>
-<div class="line">         g_encoder_motor_0-&gt;SpeedRpm(),</div>
-<div class="line">         g_encoder_motor_1-&gt;SpeedRpm(),</div>
-<div class="line">         g_encoder_motor_2-&gt;SpeedRpm(),</div>
-<div class="line">         g_encoder_motor_3-&gt;SpeedRpm(),</div>
-<div class="line">         g_encoder_motor_0-&gt;PwmDuty(),</div>
-<div class="line">         g_encoder_motor_1-&gt;PwmDuty(),</div>
-<div class="line">         g_encoder_motor_2-&gt;PwmDuty(),</div>
-<div class="line">         g_encoder_motor_3-&gt;PwmDuty(),</div>
-<div class="line">         g_encoder_motor_0-&gt;EncoderPulseCount(),</div>
-<div class="line">         g_encoder_motor_1-&gt;EncoderPulseCount(),</div>
-<div class="line">         g_encoder_motor_2-&gt;EncoderPulseCount(),</div>
-<div class="line">         g_encoder_motor_3-&gt;EncoderPulseCount());</div>
+<div class="line">         g_encoder_motor_0.SpeedRpm(),</div>
+<div class="line">         g_encoder_motor_1.SpeedRpm(),</div>
+<div class="line">         g_encoder_motor_2.SpeedRpm(),</div>
+<div class="line">         g_encoder_motor_3.SpeedRpm(),</div>
+<div class="line">         g_encoder_motor_0.PwmDuty(),</div>
+<div class="line">         g_encoder_motor_1.PwmDuty(),</div>
+<div class="line">         g_encoder_motor_2.PwmDuty(),</div>
+<div class="line">         g_encoder_motor_3.PwmDuty(),</div>
+<div class="line">         g_encoder_motor_0.EncoderPulseCount(),</div>
+<div class="line">         g_encoder_motor_1.EncoderPulseCount(),</div>
+<div class="line">         g_encoder_motor_2.EncoderPulseCount(),</div>
+<div class="line">         g_encoder_motor_3.EncoderPulseCount());</div>
 <div class="line"> </div>
 <div class="line">  delay(100);</div>
 <div class="line">}</div>

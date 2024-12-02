@@ -1,5 +1,4 @@
 #include "esp_encoder_motor.h"
-#include "esp_servo.h"
 
 /**
  * E0:

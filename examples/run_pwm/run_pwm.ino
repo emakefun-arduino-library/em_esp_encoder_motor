@@ -43,37 +43,37 @@ static em::EncoderMotor g_encoder_motor_3(
 void setup() {
   Serial.begin(115200);
   printf("setting up\n");
-  g_encoder_motor_0->Init();
-  g_encoder_motor_1->Init();
-  g_encoder_motor_2->Init();
-  g_encoder_motor_3->Init();
+  g_encoder_motor_0.Init();
+  g_encoder_motor_1.Init();
+  g_encoder_motor_2.Init();
+  g_encoder_motor_3.Init();
   printf("setup completed\n");
 }
 
 void loop() {
   const int16_t pwm_duty = 4095;
 
-  g_encoder_motor_0->RunPwmDuty(pwm_duty);
-  g_encoder_motor_1->RunPwmDuty(pwm_duty);
-  g_encoder_motor_2->RunPwmDuty(pwm_duty);
-  g_encoder_motor_3->RunPwmDuty(pwm_duty);
+  g_encoder_motor_0.RunPwmDuty(pwm_duty);
+  g_encoder_motor_1.RunPwmDuty(pwm_duty);
+  g_encoder_motor_2.RunPwmDuty(pwm_duty);
+  g_encoder_motor_3.RunPwmDuty(pwm_duty);
 
   printf("target pwm duty: %5" PRIi16 ", speed(RPM):[%4" PRId32 ", %4" PRId32 ", %4" PRId32 ", %4" PRId32
          "], pwm duty:[%5 " PRIi16 ", %5" PRIi16 ", %5" PRIi16 ", %5" PRIi16 "], pulse counts:[%" PRId64 ", %" PRId64
          ", %" PRId64 ", %" PRId64 "]\n",
          pwm_duty,
-         g_encoder_motor_0->SpeedRpm(),
-         g_encoder_motor_1->SpeedRpm(),
-         g_encoder_motor_2->SpeedRpm(),
-         g_encoder_motor_3->SpeedRpm(),
-         g_encoder_motor_0->PwmDuty(),
-         g_encoder_motor_1->PwmDuty(),
-         g_encoder_motor_2->PwmDuty(),
-         g_encoder_motor_3->PwmDuty(),
-         g_encoder_motor_0->EncoderPulseCount(),
-         g_encoder_motor_1->EncoderPulseCount(),
-         g_encoder_motor_2->EncoderPulseCount(),
-         g_encoder_motor_3->EncoderPulseCount());
+         g_encoder_motor_0.SpeedRpm(),
+         g_encoder_motor_1.SpeedRpm(),
+         g_encoder_motor_2.SpeedRpm(),
+         g_encoder_motor_3.SpeedRpm(),
+         g_encoder_motor_0.PwmDuty(),
+         g_encoder_motor_1.PwmDuty(),
+         g_encoder_motor_2.PwmDuty(),
+         g_encoder_motor_3.PwmDuty(),
+         g_encoder_motor_0.EncoderPulseCount(),
+         g_encoder_motor_1.EncoderPulseCount(),
+         g_encoder_motor_2.EncoderPulseCount(),
+         g_encoder_motor_3.EncoderPulseCount());
 
   delay(100);
 }
