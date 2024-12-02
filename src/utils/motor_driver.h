@@ -3,7 +3,7 @@
 #include <cmath>
 #include <cstdint>
 
-namespace emf {
+namespace em {
 
 class MotorDriver {
  public:
@@ -21,9 +21,9 @@ class MotorDriver {
 
   void Init();
 
-  void Duty(const int16_t duty);
+  void PwmDuty(const int16_t duty);
 
-  int16_t Duty() const;
+  int16_t PwmDuty() const;
 
   void Break();
 

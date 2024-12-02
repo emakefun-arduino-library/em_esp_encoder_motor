@@ -2,7 +2,7 @@
 
 #include <Arduino.h>
 
-namespace emf {
+namespace em {
 
 MotorDriver::MotorDriver(const uint8_t pos_pin, const uint8_t neg_pin) : pos_pin_(pos_pin), neg_pin_(neg_pin) {
 }
@@ -13,7 +13,7 @@ void MotorDriver::Init() {
   Break();
 }
 
-void MotorDriver::Duty(const int16_t duty) {
+void MotorDriver::PwmDuty(const int16_t duty) {
   duty_ = constrain(duty, -kMaxPwmDuty, kMaxPwmDuty);
   if (duty_ >= 0) {
     ledcWrite(pos_pin_, duty_);
@@ -24,7 +24,7 @@ void MotorDriver::Duty(const int16_t duty) {
   }
 }
 
-int16_t MotorDriver::Duty() const {
+int16_t MotorDriver::PwmDuty() const {
   return duty_;
 }
 
