@@ -3,6 +3,7 @@
 #include <Arduino.h>
 
 #include <thread>
+#include <utility>
 
 #include "driver/gpio.h"
 #include "driver/ledc.h"
@@ -13,9 +14,10 @@ namespace {
 constexpr float kDefaultPositionP = 20.0;
 constexpr float kDefaultPositionI = 0.1;
 constexpr float kDefaultPositionD = 5.0;
-constexpr float kDefaultSpeedP = 15.0;
-constexpr float kDefaultSpeedI = 4.0;
+constexpr float kDefaultSpeedP = 3.0;
+constexpr float kDefaultSpeedI = 1.0;
 constexpr float kDefaultSpeedD = 1.0;
+constexpr int32_t kDeadRpmZone = 10;
 }  // namespace
 
 EncoderMotor::EncoderMotor(const uint8_t pin_positive,
@@ -30,19 +32,15 @@ EncoderMotor::EncoderMotor(const uint8_t pin_positive,
       motor_driver_(pin_positive, pin_negative),
       total_ppr_(ppr * reduction_ration),
       b_level_at_a_falling_edge_(phase_relation == PhaseRelation::kAPhaseLeads ? HIGH : LOW) {
-  //   pid_position_.p = kDefaultPositionP;
-  //   pid_position_.i = kDefaultPositionI;
-  //   pid_position_.d = kDefaultPositionD;
-
-  pid_speed_.p = kDefaultSpeedP;
-  pid_speed_.i = kDefaultSpeedI;
-  pid_speed_.d = kDefaultSpeedD;
-  pid_speed_.max_integral = ceil(MotorDriver::kMaxPwmDuty / pid_speed_.i);
+  rpm_pid_.p = kDefaultSpeedP;
+  rpm_pid_.i = kDefaultSpeedI;
+  rpm_pid_.d = kDefaultSpeedD;
+  rpm_pid_.max_integral = ceil(MotorDriver::kMaxPwmDuty / rpm_pid_.i);
 }
 
 void EncoderMotor::Init() {
   std::lock_guard<std::mutex> l(mutex_);
-  if (active_) {
+  if (update_rpm_thread_ != nullptr) {
     return;
   }
 
@@ -52,47 +50,84 @@ void EncoderMotor::Init() {
   pinMode(pin_b_, INPUT_PULLUP);
 
   attachInterruptArg(pin_a_, EncoderMotor::OnPinAFalling, this, FALLING);
-  active_ = true;
-  xTaskCreate(&EncoderMotor::Loop, "loop", 4096, this, 0, nullptr);
+  update_rpm_thread_ = new std::thread(&EncoderMotor::UpdateRpm, this);
+}
+
+void EncoderMotor::SetSpeedPid(const float p, const float i, const float d) {
+  std::lock_guard<std::mutex> l(mutex_);
+  rpm_pid_.p = p;
+  rpm_pid_.i = i;
+  rpm_pid_.d = d;
+
+  if (i > 0) {
+    rpm_pid_.max_integral = ceil(MotorDriver::kMaxPwmDuty / rpm_pid_.i);
+  } else {
+    rpm_pid_.max_integral = 0;
+  }
+}
+
+void EncoderMotor::GetSpeedPid(float* const p, float* const i, float* const d) {
+  std::lock_guard<std::mutex> l(mutex_);
+  if (p != nullptr) {
+    *p = rpm_pid_.p;
+  }
+  if (i != nullptr) {
+    *i = rpm_pid_.i;
+  }
+  if (d != nullptr) {
+    *d = rpm_pid_.d;
+  }
+}
+
+EncoderMotor::~EncoderMotor() {
+  std::unique_lock<std::mutex> lock(mutex_);
+  DeleteThread(driving_thread_);
+  DeleteThread(update_rpm_thread_);
 }
 
 void EncoderMotor::RunPwmDuty(const int16_t duty) {
-  std::lock_guard<std::mutex> l(mutex_);
-  if (kPwmMode == mode_ && motor_driver_.PwmDuty() == duty) {
+  std::unique_lock<std::mutex> lock(mutex_);
+  DeleteThread(driving_thread_);
+  target_rpm_ = 0;
+
+  if (motor_driver_.PwmDuty() == duty) {
     return;
   }
 
-  mode_ = kPwmMode;
   motor_driver_.PwmDuty(duty);
 }
 
-void EncoderMotor::RunSpeedRpm(const int16_t speed_rpm) {
+void EncoderMotor::RunRpm(const int16_t rpm) {
   std::lock_guard<std::mutex> l(mutex_);
-  if (speed_rpm == target_speed_rpm_ && kSpeedMode == mode_) {
+  if (driving_thread_ == nullptr) {
+    rpm_pid_.integral = 0;
+    driving_thread_ = new std::thread(&EncoderMotor::Driving, this);
+  }
+
+  if (rpm == target_rpm_) {
     return;
   }
 
-  mode_ = kSpeedMode;
-  target_speed_rpm_ = speed_rpm;
-
-  if (fabs(pid_speed_.i) > __FLT_EPSILON__) {
-    pid_speed_.integral = motor_driver_.PwmDuty() / pid_speed_.i;
-  }
+  target_rpm_ = rpm;
+  drive_ = true;
+  condition_.notify_all();
 }
 
 void EncoderMotor::Stop() {
-  std::lock_guard<std::mutex> l(mutex_);
-  mode_ = kNoneMode;
+  std::unique_lock<std::mutex> lock(mutex_);
+  DeleteThread(driving_thread_);
   motor_driver_.Break();
-  pid_speed_.integral = 0;
+  target_rpm_ = 0;
+  rpm_pid_.integral = 0;
 }
 
 int64_t EncoderMotor::EncoderPulseCount() const {
   return pulse_count_;
 }
 
-int32_t EncoderMotor::SpeedRpm() const {
-  return speed_rpm_;
+int32_t EncoderMotor::Rpm() const {
+  std::unique_lock<std::mutex> lock(mutex_);
+  return rpm_;
 }
 
 int16_t EncoderMotor::PwmDuty() const {
@@ -100,12 +135,13 @@ int16_t EncoderMotor::PwmDuty() const {
   return motor_driver_.PwmDuty();
 }
 
-void EncoderMotor::OnPinAFalling(void* self) {
-  reinterpret_cast<EncoderMotor*>(self)->OnPinAFalling();
+int32_t EncoderMotor::TargetRpm() const {
+  std::lock_guard<std::mutex> l(mutex_);
+  return target_rpm_;
 }
 
-void EncoderMotor::Loop(void* self) {
-  reinterpret_cast<EncoderMotor*>(self)->Loop();
+void EncoderMotor::OnPinAFalling(void* self) {
+  reinterpret_cast<EncoderMotor*>(self)->OnPinAFalling();
 }
 
 void EncoderMotor::OnPinAFalling() {
@@ -116,69 +152,55 @@ void EncoderMotor::OnPinAFalling() {
   }
 }
 
-void EncoderMotor::Loop() {
-  while (active_) {
-    CalculateSpeed();
+void EncoderMotor::UpdateRpm() {
+  std::unique_lock lock(mutex_);
+  last_update_speed_time_ = std::chrono::system_clock::now();
+  while (!condition_.wait_until(
+      lock, last_update_speed_time_ + std::chrono::milliseconds(50), [this]() { return update_rpm_thread_ == nullptr; })) {
+    const auto now = std::chrono::system_clock::now();
+    const double duration = std::chrono::duration_cast<std::chrono::milliseconds>(now - last_update_speed_time_).count();
+    const double pulse_count = pulse_count_;
+    rpm_ = (pulse_count - previous_pulse_count_) * 60000.0 / duration / total_ppr_;
+    previous_pulse_count_ = pulse_count;
+    last_update_speed_time_ = now;
+    if (driving_thread_ != nullptr) {
+      drive_ = true;
+      condition_.notify_all();
+    }
+  }
+}
 
-    mutex_.lock();
-    const auto mode = mode_;
-    mutex_.unlock();
+void EncoderMotor::Driving() {
+  std::unique_lock lock(mutex_);
 
-    switch (mode) {
-      case kSpeedMode: {
-        UpdatePwmForSpeed();
-        break;
-      }
-      default: {
-        break;
-      }
+  while (driving_thread_ != nullptr) {
+    condition_.wait(lock, [this]() { return driving_thread_ == nullptr || drive_; });
+
+    if (driving_thread_ == nullptr) {
+      return;
     }
 
-    delay(5);
+    if (target_rpm_ < kDeadRpmZone && target_rpm_ > -kDeadRpmZone) {
+      motor_driver_.PwmDuty(0);
+    } else {
+      const float speed_error = target_rpm_ - rpm_;
+      rpm_pid_.integral = constrain(rpm_pid_.integral + speed_error, -rpm_pid_.max_integral, rpm_pid_.max_integral);
+      const int16_t duty = round(rpm_pid_.p * speed_error + rpm_pid_.i * rpm_pid_.integral);
+      motor_driver_.PwmDuty(duty);
+    }
+    drive_ = false;
   }
 }
 
-void EncoderMotor::CalculateSpeed() {
-  const uint64_t now = esp_timer_get_time() / 1000;
-  if (last_update_speed_time_ == 0) {
-    last_update_speed_time_ = now;
-    return;
+void EncoderMotor::DeleteThread(std::thread*& thread) {
+  if (thread != nullptr) {
+    const auto temp = std::exchange(thread, nullptr);
+    condition_.notify_all();
+    mutex_.unlock();
+    temp->join();
+    delete temp;
+    mutex_.lock();
   }
-
-  const double duration = now - last_update_speed_time_;
-
-  if (duration < 50.0) {
-    return;
-  }
-
-  const double pulse_count = pulse_count_;
-  speed_rpm_ = (pulse_count - previous_pulse_count_) * 60000.0 / duration / total_ppr_;
-  const int32_t speed = speed_rpm_;
-  previous_pulse_count_ = pulse_count;
-  last_update_speed_time_ = now;
-}
-
-void EncoderMotor::UpdatePwmForSpeed() {
-  std::lock_guard<std::mutex> l(mutex_);
-  if (mode_ != kSpeedMode) {
-    return;
-  }
-
-  const uint64_t now = esp_timer_get_time() / 1000;
-  if (last_update_pwm_time_ == 0) {
-    last_update_pwm_time_ = now;
-    return;
-  }
-
-  if (now - last_update_pwm_time_ < 50) {
-    return;
-  }
-
-  const float speed_error = constrain(target_speed_rpm_ - speed_rpm_, -50, 50);
-  pid_speed_.integral = constrain(pid_speed_.integral + speed_error, -pid_speed_.max_integral, pid_speed_.max_integral);
-  const int16_t duty = round(pid_speed_.p * speed_error + pid_speed_.i * pid_speed_.integral);
-  motor_driver_.PwmDuty(duty);
-  last_update_pwm_time_ = now;
 }
 
 }  // namespace em

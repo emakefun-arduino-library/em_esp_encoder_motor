@@ -4,15 +4,42 @@ import shutil
 
 workspace = os.path.join(os.path.dirname(__file__), os.pardir)
 
+docs_path = os.path.join(workspace, "docs")
 
-def rmdir(path):
-    if os.path.exists(path):
-        shutil.rmtree(path)
+root_index: str = """
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>语言选择 (Language Selection)</title>
+</head>
+
+<body>
+    <h1 style="font-size: larger; text-align: center;">请选择语言 (Please select a language):</h1>
+    <p style="text-align: center;">
+        <a href="./docs_zh-CN/index.html" style="font-size: larger;">中文 (Chinese)</a>
+    </p>
+    <p style="text-align: center;">
+        <a href="./docs_en/index.html" style="font-size: larger;">英文 (English)</a>
+    </p>
+</body>
+
+</html>
+"""
 
 
-rmdir(os.path.join(workspace, "docs_en"))
+if os.path.exists(docs_path):
+    shutil.rmtree(docs_path)
 
-rmdir(os.path.join(workspace, "docs_zh-CN"))
+os.mkdir(docs_path)
+
+with open(
+    os.path.join(docs_path, "index.html"),
+    mode="w",
+    encoding="utf-8",
+    newline="\n",
+) as file:
+    file.write(root_index)
 
 subprocess.run(
     ["doxygen", os.path.join("doxygen", "en.cfg")],

@@ -7,9 +7,9 @@ namespace em {
 
 class MotorDriver {
  public:
-  static constexpr uint8_t kPwmResolution = 12;
+  static constexpr uint8_t kPwmResolution = 10;
 
-  static constexpr uint8_t kPwmFrequency = 10000;
+  static constexpr uint8_t kPwmFrequency = 75000;
 
   static_assert(kPwmResolution > 1);
 

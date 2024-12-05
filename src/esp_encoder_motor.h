@@ -9,6 +9,8 @@
 
 #include <WString.h>
 
+#include <chrono>
+#include <condition_variable>
 #include <cstdint>
 #include <thread>
 
@@ -25,13 +27,14 @@ namespace em {
  * -# 支持获取电机当前的转速信息，单位为RPM。
  * -# 支持获取编码脉冲计数值，此计数值在A相下降沿进行更新，电机正转时计数值加1，反转时减1。
  * -# 支持获取电机驱动器当前设置的PWM占空比。
- * @example run_speed.ino 以指定定的速度（RPM）转动电机
+ * @example run_rpm.ino 以指定的转速（RPM）转动电机
  * @example run_pwm.ino 以指定的PMW占空比转动电机
  * @example forward_stop_backward.ino 电机前进后退停止
  * @example detect_phase_relation.ino
  * 将编码电机按照示例程序中的说明接入到指定位置，程序运行成功后，会根据电机正转时编码器AB相的实际相位关系，
  * 在串口打印输出是使用 @ref kAPhaseLeads 还是 @ref
  * kBPhaseLeads，以此帮助用户确定在创建EncoderMotor对象时phase_relation参数应设置的值。
+ * @example run_rpm_with_analog_input.ino 依据特定 IO 口的模拟值动态设定电机转动速度
  */
 /**
  * @~English
@@ -45,13 +48,15 @@ namespace em {
  * -# Supports obtaining the encoder pulse count value. This count value is updated at the falling edge of phase A, incremented
  * by 1 during forward rotation and decremented by 1 during reverse rotation.
  * -# Supports obtaining the PWM duty cycle currently set on the motor driver.
- * @example run_speed.ino Rotate the motor at the specified speed (RPM).
+ * @example run_rpm.ino Rotate the motor at the specified speed (RPM).
  * @example run_pwm.ino Rotate the motor with the specified PWM duty cycle.
  * @example forward_stop_backward.ino Move the motor forward, stop it, and then move it backward.
  * @example detect_phase_relation.ino Connect the encoded motor to the specified positions as described in the example program.
  * After the program runs successfully, it will print out whether kAPhaseLeads or kBPhaseLeads should be used based on the
  * actual phase relationship between the A and B phases of the encoder during forward rotation of the motor, helping the user
  * determine the value that should be set for the phase_relation parameter when creating an EncoderMotor object.
+ * @example run_rpm_with_analog_input.ino Dynamically set the rotation speed of the motor according to the analog value of the
+ * specific I/O port.
  */
 class EncoderMotor {
  public:
@@ -168,6 +173,8 @@ class EncoderMotor {
                const uint32_t reduction_ration,
                const PhaseRelation phase_relation);
 
+  ~EncoderMotor();
+
   /**
    * @~Chinese
    * @brief 初始化电机设置。
@@ -177,6 +184,43 @@ class EncoderMotor {
    * @brief Initialize motor settings.
    */
   void Init();
+
+  /**
+   * @~Chinese
+   * @brief 使用给定的比例（P）、积分（I）、微分（D）参数值来设置速度PID控制器的参数。
+   * @param[in] p 比例系数（P）的值。
+   * @param[in] i 积分系数（I）的值。
+   * @param[in] d 微分系数（D）的值。
+   */
+  /**
+   * @~English
+   * @brief Set the parameters of the speed PID controller with the given Proportional (P), Integral (I), and Derivative (D)
+   * parameter values.
+   * @param[in] p The value of the Proportional coefficient (P).
+   * @param[in] i The value of the Integral coefficient (I).
+   * @param[in] d The value of the Derivative coefficient (D).
+   */
+  void SetSpeedPid(const float p, const float i, const float d);
+
+  /**
+   * @~Chinese
+   * @brief 通过指针获取速度PID控制器的比例（P）、积分（I）、微分（D）参数值。
+   * @param[out] p 用于获取比例系数（P）值的指针，函数执行后该指针指向的内存位置将存储对应的参数值。
+   * @param[out] i 用于获取积分系数（I）值的指针，函数执行后该指针指向的内存位置将存储对应的参数值。
+   * @param[out] d 用于获取微分系数（D）值的指针，函数执行后该指针指向的内存位置将存储对应的参数值。
+   */
+  /**
+   * @~English
+   * @brief Get the Proportional (P), Integral (I), and Derivative (D) parameter values of the speed PID controller through
+   * pointers.
+   * @param[out] p Pointer used to get the value of the Proportional coefficient (P). After the function is executed, the memory
+   * location pointed to by this pointer will store the corresponding parameter value.
+   * @param[out] i Pointer used to get the value of the Integral coefficient (I). After the function is executed, the memory
+   * location pointed to by this pointer will store the corresponding parameter value.
+   * @param[out] d Pointer used to get the value of the Derivative coefficient (D). After the function is executed, the memory
+   * location pointed to by this pointer will store the corresponding parameter value.
+   */
+  void GetSpeedPid(float* const p, float* const i, float* const d);
 
   /**
    * @~Chinese
@@ -193,14 +237,14 @@ class EncoderMotor {
   /**
    * @~Chinese
    * @brief 以设定的速度值（RPM）运行电机。
-   * @param[in] speed 速度设定值（RPM）。
+   * @param[in] rpm 速度设定值（RPM）。
    */
   /**
    * @~English
    * @brief Run motor at speed setpoint.
-   * @param[in] speed Speed setpoint(RPM).
+   * @param[in] rpm Speed setpoint(RPM).
    */
-  void RunSpeedRpm(const int16_t speed_rpm);
+  void RunRpm(const int16_t rpm);
 
   /**
    * @~Chinese
@@ -235,7 +279,7 @@ class EncoderMotor {
    * @brief Get the current speed of the motor.
    * @return The current speed of the motor in RPM.
    */
-  int32_t SpeedRpm() const;
+  int32_t Rpm() const;
 
   /**
    * @~Chinese
@@ -259,56 +303,43 @@ class EncoderMotor {
    * @brief Get the target speed of the motor in RPM.
    * @return The target speed of the motor in RPM.
    */
-  inline int32_t TargetSpeedRpm() const {
-    return target_speed_rpm_;
-  }
+  int32_t TargetRpm() const;
 
  private:
   static void OnPinAFalling(void* self);
 
-  static void Loop(void* self);
-
   void OnPinAFalling();
 
-  void Loop();
+  void UpdateRpm();
 
-  void CalculateSpeed();
+  void Driving();
 
-  void UpdatePwmForSpeed();
-
-  enum Mode {
-    kNoneMode,
-    kPwmMode,
-    kSpeedMode,
-    kPositionMode,
-  };
+  void DeleteThread(std::thread*& thread);
 
   struct Pid {
     float p = 0.0;
     float i = 0.0;
     float d = 0.0;
     float integral = 0.0;
-    float last_error = 0.0;
     float max_integral = 0.0;
   };
 
   mutable std::mutex mutex_;
+  std::condition_variable condition_;
+  std::thread* update_rpm_thread_ = nullptr;
+  std::thread* driving_thread_ = nullptr;
   MotorDriver motor_driver_;
   const uint8_t pin_a_ = 0;
   const uint8_t pin_b_ = 0;
-  double total_ppr_ = 0;
+  const double total_ppr_ = 0;
   const uint8_t b_level_at_a_falling_edge_ = 0;
-  Pid pid_speed_;
-  bool active_ = false;
-  Mode mode_ = kNoneMode;
-  int32_t previous_pulse_count_ = 0;
+  Pid rpm_pid_;
+  int64_t previous_pulse_count_ = 0;
   std::atomic<int64_t> pulse_count_ = 0;
-  uint64_t last_update_speed_time_ = 0;
-  uint64_t last_update_pwm_time_ = 0;
-
-  std::atomic<int32_t> speed_rpm_ = 0;
-
-  float target_speed_rpm_ = 0.0;
+  std::chrono::system_clock::time_point last_update_speed_time_ = std::chrono::time_point<std::chrono::system_clock>::min();
+  int32_t rpm_ = 0;
+  int32_t target_rpm_ = 0.0;
+  bool drive_ = false;
 };
 }  // namespace em
 

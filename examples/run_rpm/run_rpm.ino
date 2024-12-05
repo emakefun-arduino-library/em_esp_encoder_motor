@@ -51,45 +51,16 @@ void setup() {
 }
 
 void loop() {
-  const int16_t rpm = 100;
-  static auto s_state_changed_time = millis();
-  static enum State : uint8_t {
-    kNone,
-    kForward,
-    kBackward,
-    kStateNum,
-  } s_state = kForward;
+  const int16_t speed_rpm = 100;
 
-  if (millis() - s_state_changed_time > 2000) {
-    switch (s_state) {
-      case kNone:
-        g_encoder_motor_0.Stop();
-        g_encoder_motor_1.Stop();
-        g_encoder_motor_2.Stop();
-        g_encoder_motor_3.Stop();
-        break;
-      case kForward:
-        g_encoder_motor_0.RunRpm(rpm);
-        g_encoder_motor_1.RunRpm(rpm);
-        g_encoder_motor_2.RunRpm(rpm);
-        g_encoder_motor_3.RunRpm(rpm);
-        break;
-      case kBackward:
-        g_encoder_motor_0.RunRpm(-rpm);
-        g_encoder_motor_1.RunRpm(-rpm);
-        g_encoder_motor_2.RunRpm(-rpm);
-        g_encoder_motor_3.RunRpm(-rpm);
-        break;
-      default:
-        break;
-    }
-    s_state = static_cast<State>((static_cast<uint8_t>(s_state) + 1) % kStateNum);
-    s_state_changed_time = millis();
-  }
+  g_encoder_motor_0.RunRpm(speed_rpm);
+  g_encoder_motor_1.RunRpm(speed_rpm);
+  g_encoder_motor_2.RunRpm(speed_rpm);
+  g_encoder_motor_3.RunRpm(speed_rpm);
 
-  printf("target rpm: %4" PRIi16 ", current rpm:[%4" PRId32 ", %4" PRId32 ", %4" PRId32 ", %4" PRId32 "], pwm duty:[%5 " PRIi16
-         ", %5" PRIi16 ", %5" PRIi16 ", %5" PRIi16 "], pulse counts:[%" PRId64 ", %" PRId64 ", %" PRId64 ", %" PRId64 "]\n",
-         rpm,
+  printf("target speed: %" PRIi16 ", current speeds: [%4" PRId32 ", %4" PRId32 ", %4" PRId32 ", %4" PRId32 "], pwm duties: [%5 " PRIi16
+         ", %5" PRIi16 ", %5" PRIi16 ", %5" PRIi16 "], pulse counts: [%" PRId64 ", %" PRId64 ", %" PRId64 ", %" PRId64 "]\n",
+         speed_rpm,
          g_encoder_motor_0.Rpm(),
          g_encoder_motor_1.Rpm(),
          g_encoder_motor_2.Rpm(),

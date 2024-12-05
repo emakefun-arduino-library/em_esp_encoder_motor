@@ -12,19 +12,19 @@ void setup() {
 }
 
 void loop() {
-  const auto speed_rpm = g_encoder_motor_0.SpeedRpm();
-  if (speed_rpm > 0) {
+  const auto rpm = g_encoder_motor_0.Rpm();
+  if (rpm > 0) {
     printf(
-        "[%ul] Speed: %d RPM. The phase of A leads B. Constructed with the em::EncoderMotor::PhaseRelation::kAPhaseLeads "
+        "[%ul] RPM: %d . The phase of A leads B. Constructed with the em::EncoderMotor::PhaseRelation::kAPhaseLeads "
         "enum.\n",
         millis(),
-        speed_rpm);
-  } else if (speed_rpm < 0) {
+        rpm);
+  } else if (rpm < 0) {
     printf(
-        "[%ul] Speed: %d RPM. The phase of B leads A. Constructed with the em::EncoderMotor::PhaseRelation::kBPhaseLeads "
+        "[%ul] RPM: %d . The phase of B leads A. Constructed with the em::EncoderMotor::PhaseRelation::kBPhaseLeads "
         "enum.\n",
         millis(),
-        speed_rpm);
+        rpm);
   } else {
     printf("The motor is not running currently.\n");
   }
