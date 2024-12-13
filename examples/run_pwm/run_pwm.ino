@@ -51,7 +51,7 @@ void setup() {
 }
 
 void loop() {
-  const int16_t pwm_duty = 4095;
+  const int16_t pwm_duty = 1023;
 
   g_encoder_motor_0.RunPwmDuty(pwm_duty);
   g_encoder_motor_1.RunPwmDuty(pwm_duty);

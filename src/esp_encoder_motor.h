@@ -225,12 +225,12 @@ class EncoderMotor {
   /**
    * @~Chinese
    * @brief 直接设置电机的PWM占空比。
-   * @param[in] pwm_duty PWM占空比（取值范围 -4095到4095）。
+   * @param[in] pwm_duty PWM占空比（取值范围 -1023到1023）。
    */
   /**
    * @~English
    * @brief Set motor PWM directly.
-   * @param[in] pwm_duty PWM duty cycle (-4095 to 4095).
+   * @param[in] pwm_duty PWM duty cycle (-1023 to 1023).
    */
   void RunPwmDuty(const int16_t pwm_duty);
 
