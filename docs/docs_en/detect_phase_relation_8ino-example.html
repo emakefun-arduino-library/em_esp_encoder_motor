@@ -117,13 +117,13 @@ $(function(){initNavTree('detect_phase_relation_8ino-example.html',''); initResi
 <div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> rpm = g_encoder_motor_0.SpeedRpm();</div>
 <div class="line">  <span class="keywordflow">if</span> (rpm &gt; 0) {</div>
 <div class="line">    printf(</div>
-<div class="line">        <span class="stringliteral">&quot;[%ul] RPM: %d . The phase of A leads B. Constructed with the em::EncoderMotor::PhaseRelation::kAPhaseLeads &quot;</span></div>
+<div class="line">        <span class="stringliteral">&quot;[%lu] RPM: %d . The phase of A leads B. Constructed with the em::EncoderMotor::PhaseRelation::kAPhaseLeads &quot;</span></div>
 <div class="line">        <span class="stringliteral">&quot;enum.\n&quot;</span>,</div>
 <div class="line">        millis(),</div>
 <div class="line">        rpm);</div>
 <div class="line">  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (rpm &lt; 0) {</div>
 <div class="line">    printf(</div>
-<div class="line">        <span class="stringliteral">&quot;[%ul] RPM: %d . The phase of B leads A. Constructed with the em::EncoderMotor::PhaseRelation::kBPhaseLeads &quot;</span></div>
+<div class="line">        <span class="stringliteral">&quot;[%lu] RPM: %d . The phase of B leads A. Constructed with the em::EncoderMotor::PhaseRelation::kBPhaseLeads &quot;</span></div>
 <div class="line">        <span class="stringliteral">&quot;enum.\n&quot;</span>,</div>
 <div class="line">        millis(),</div>
 <div class="line">        rpm);</div>
