@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['targetrpm_0',['TargetRpm',['../classem_1_1_encoder_motor.html#a8e41301b0622532cc66c59cfeb56684a',1,'em::EncoderMotor']]]
+  ['targetrpm_0',['TargetRpm',['../classem_1_1_esp_encoder_motor.html#a77e95dcd126833e6c3063eba098eb0a7',1,'em::EspEncoderMotor']]]
 ];

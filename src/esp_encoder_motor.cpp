@@ -20,7 +20,7 @@ constexpr float kDefaultSpeedD = 1.0;
 constexpr int32_t kDeadRpmZone = 10;
 }  // namespace
 
-EncoderMotor::EncoderMotor(const uint8_t pin_positive,
+EspEncoderMotor::EspEncoderMotor(const uint8_t pin_positive,
                            const uint8_t pin_negative,
                            const uint8_t pin_a,
                            const uint8_t pin_b,
@@ -35,10 +35,10 @@ EncoderMotor::EncoderMotor(const uint8_t pin_positive,
   rpm_pid_.p = kDefaultSpeedP;
   rpm_pid_.i = kDefaultSpeedI;
   rpm_pid_.d = kDefaultSpeedD;
-  rpm_pid_.max_integral = ceil(MotorDriver::kMaxPwmDuty / rpm_pid_.i);
+  rpm_pid_.max_integral = ceil(EspMotor::kMaxPwmDuty / rpm_pid_.i);
 }
 
-void EncoderMotor::Init() {
+void EspEncoderMotor::Init() {
   std::lock_guard<std::mutex> l(mutex_);
   if (update_rpm_thread_ != nullptr) {
     return;
@@ -49,24 +49,24 @@ void EncoderMotor::Init() {
   pinMode(pin_a_, INPUT_PULLUP);
   pinMode(pin_b_, INPUT_PULLUP);
 
-  attachInterruptArg(pin_a_, EncoderMotor::OnPinAFalling, this, FALLING);
-  update_rpm_thread_ = new std::thread(&EncoderMotor::UpdateRpm, this);
+  attachInterruptArg(pin_a_, EspEncoderMotor::OnPinAFalling, this, FALLING);
+  update_rpm_thread_ = new std::thread(&EspEncoderMotor::UpdateRpm, this);
 }
 
-void EncoderMotor::SetSpeedPid(const float p, const float i, const float d) {
+void EspEncoderMotor::SetSpeedPid(const float p, const float i, const float d) {
   std::lock_guard<std::mutex> l(mutex_);
   rpm_pid_.p = p;
   rpm_pid_.i = i;
   rpm_pid_.d = d;
 
   if (i > 0) {
-    rpm_pid_.max_integral = ceil(MotorDriver::kMaxPwmDuty / rpm_pid_.i);
+    rpm_pid_.max_integral = ceil(EspMotor::kMaxPwmDuty / rpm_pid_.i);
   } else {
     rpm_pid_.max_integral = 0;
   }
 }
 
-void EncoderMotor::GetSpeedPid(float* const p, float* const i, float* const d) {
+void EspEncoderMotor::GetSpeedPid(float* const p, float* const i, float* const d) {
   std::lock_guard<std::mutex> l(mutex_);
   if (p != nullptr) {
     *p = rpm_pid_.p;
@@ -79,16 +79,16 @@ void EncoderMotor::GetSpeedPid(float* const p, float* const i, float* const d) {
   }
 }
 
-EncoderMotor::~EncoderMotor() {
+EspEncoderMotor::~EspEncoderMotor() {
   std::unique_lock<std::mutex> lock(mutex_);
   DeleteThread(driving_thread_);
   DeleteThread(update_rpm_thread_);
 }
 
-void EncoderMotor::RunPwmDuty(const int16_t duty) {
+void EspEncoderMotor::RunPwmDuty(const int16_t duty) {
   std::unique_lock<std::mutex> lock(mutex_);
   DeleteThread(driving_thread_);
-  target_rpm_ = 0;
+  target_speed_rpm_ = 0;
 
   if (motor_driver_.PwmDuty() == duty) {
     return;
@@ -97,54 +97,54 @@ void EncoderMotor::RunPwmDuty(const int16_t duty) {
   motor_driver_.PwmDuty(duty);
 }
 
-void EncoderMotor::RunRpm(const int16_t rpm) {
+void EspEncoderMotor::RunSpeed(const int16_t speed_rpm) {
   std::lock_guard<std::mutex> l(mutex_);
   if (driving_thread_ == nullptr) {
     rpm_pid_.integral = 0;
-    driving_thread_ = new std::thread(&EncoderMotor::Driving, this);
+    driving_thread_ = new std::thread(&EspEncoderMotor::Driving, this);
   }
 
-  if (rpm == target_rpm_) {
+  if (speed_rpm == target_speed_rpm_) {
     return;
   }
 
-  target_rpm_ = rpm;
+  target_speed_rpm_ = speed_rpm;
   drive_ = true;
   condition_.notify_all();
 }
 
-void EncoderMotor::Stop() {
+void EspEncoderMotor::Stop() {
   std::unique_lock<std::mutex> lock(mutex_);
   DeleteThread(driving_thread_);
-  motor_driver_.Break();
-  target_rpm_ = 0;
+  motor_driver_.Stop();
+  target_speed_rpm_ = 0;
   rpm_pid_.integral = 0;
 }
 
-int64_t EncoderMotor::EncoderPulseCount() const {
+int64_t EspEncoderMotor::EncoderPulseCount() const {
   return pulse_count_;
 }
 
-int32_t EncoderMotor::Rpm() const {
+int32_t EspEncoderMotor::SpeedRpm() const {
   std::unique_lock<std::mutex> lock(mutex_);
-  return rpm_;
+  return speed_rpm_;
 }
 
-int16_t EncoderMotor::PwmDuty() const {
+int16_t EspEncoderMotor::PwmDuty() const {
   std::lock_guard<std::mutex> l(mutex_);
   return motor_driver_.PwmDuty();
 }
 
-int32_t EncoderMotor::TargetRpm() const {
+int32_t EspEncoderMotor::TargetRpm() const {
   std::lock_guard<std::mutex> l(mutex_);
-  return target_rpm_;
+  return target_speed_rpm_;
 }
 
-void EncoderMotor::OnPinAFalling(void* self) {
-  reinterpret_cast<EncoderMotor*>(self)->OnPinAFalling();
+void EspEncoderMotor::OnPinAFalling(void* self) {
+  reinterpret_cast<EspEncoderMotor*>(self)->OnPinAFalling();
 }
 
-void EncoderMotor::OnPinAFalling() {
+void EspEncoderMotor::OnPinAFalling() {
   if (gpio_get_level(static_cast<gpio_num_t>(pin_b_)) == b_level_at_a_falling_edge_) {
     ++pulse_count_;
   } else {
@@ -152,7 +152,7 @@ void EncoderMotor::OnPinAFalling() {
   }
 }
 
-void EncoderMotor::UpdateRpm() {
+void EspEncoderMotor::UpdateRpm() {
   std::unique_lock lock(mutex_);
   last_update_speed_time_ = std::chrono::system_clock::now();
   while (!condition_.wait_until(
@@ -160,7 +160,7 @@ void EncoderMotor::UpdateRpm() {
     const auto now = std::chrono::system_clock::now();
     const double duration = std::chrono::duration_cast<std::chrono::milliseconds>(now - last_update_speed_time_).count();
     const double pulse_count = pulse_count_;
-    rpm_ = (pulse_count - previous_pulse_count_) * 60000.0 / duration / total_ppr_;
+    speed_rpm_ = (pulse_count - previous_pulse_count_) * 60000.0 / duration / total_ppr_;
     previous_pulse_count_ = pulse_count;
     last_update_speed_time_ = now;
     if (driving_thread_ != nullptr) {
@@ -170,7 +170,7 @@ void EncoderMotor::UpdateRpm() {
   }
 }
 
-void EncoderMotor::Driving() {
+void EspEncoderMotor::Driving() {
   std::unique_lock lock(mutex_);
 
   while (driving_thread_ != nullptr) {
@@ -180,10 +180,10 @@ void EncoderMotor::Driving() {
       return;
     }
 
-    if (target_rpm_ < kDeadRpmZone && target_rpm_ > -kDeadRpmZone) {
+    if (target_speed_rpm_ < kDeadRpmZone && target_speed_rpm_ > -kDeadRpmZone) {
       motor_driver_.PwmDuty(0);
     } else {
-      const float speed_error = target_rpm_ - rpm_;
+      const float speed_error = target_speed_rpm_ - speed_rpm_;
       rpm_pid_.integral = constrain(rpm_pid_.integral + speed_error, -rpm_pid_.max_integral, rpm_pid_.max_integral);
       const int16_t duty = round(rpm_pid_.p * speed_error + rpm_pid_.i * rpm_pid_.integral);
       motor_driver_.PwmDuty(duty);
@@ -192,7 +192,7 @@ void EncoderMotor::Driving() {
   }
 }
 
-void EncoderMotor::DeleteThread(std::thread*& thread) {
+void EspEncoderMotor::DeleteThread(std::thread*& thread) {
   if (thread != nullptr) {
     const auto temp = std::exchange(thread, nullptr);
     condition_.notify_all();

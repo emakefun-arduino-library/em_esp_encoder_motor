@@ -1,0 +1,175 @@
+#pragma once
+
+#ifndef _EM_ESP_MOTOR_DRIVER_H_
+#define _EM_ESP_MOTOR_DRIVER_H_
+
+/**
+ * @file esp_motor.h
+ */
+
+#include <WString.h>
+
+#include <cmath>
+#include <cstdint>
+
+namespace em {
+/**
+ * @~Chinese
+ * @class EspMotor
+ * @brief 两路PWM电机驱动类
+ * @example drive_dc_motor.ino PWM驱动直流电机正反转
+ */
+/**
+ * @~English
+ * @class EspMotor
+ * @brief A two-channel PWM motor driver class.
+ * @example drive_dc_motor.ino Use PWM to drive the DC motor to rotate forward and backward.
+ */
+class EspMotor {
+ public:
+  /**
+   * @~Chinese
+   * @brief 主版本号。
+   */
+  /**
+   * @~English
+   * @brief Major version number.
+   */
+  static constexpr uint8_t kVersionMajor = 1;
+
+  /**
+   * @~Chinese
+   * @brief 次版本号。
+   */
+  /**
+   * @~English
+   * @brief Minor version number.
+   */
+  static constexpr uint8_t kVersionMinor = 0;
+
+  /**
+   * @~Chinese
+   * @brief 修订版本号。
+   */
+  /**
+   * @~English
+   * @brief Patch version number.
+   */
+  static constexpr uint8_t kVersionPatch = 1;
+
+  /**
+   * @~Chinese
+   * @brief PWM的分辨率，决定了PWM占空比可调节的精细程度，单位为位，这里设置为10位。
+   * /
+  /**
+   * @~English
+   * @brief The resolution of PWM, which determines the fine-tuning level of the PWM duty cycle, in bits. Here it is set to 10
+   * bits.
+   */
+  static constexpr uint8_t kPwmResolution = 10;
+  /**
+   * @~Chinese
+   * @brief PWM的频率，单位为赫兹，这里设置为75000赫兹，用于控制电机驱动的PWM信号频率。
+   * @~English
+   * @brief The frequency of PWM, in Hertz. Here it is set to 75000 Hz, used to control the frequency of the PWM signal for
+   * motor driving.
+   */
+  static constexpr uint8_t kPwmFrequency = 75000;
+
+  static_assert(kPwmResolution > 1);
+  /**
+   * @~Chinese
+   * @brief 根据PWM分辨率计算出的最大PWM占空比数值，通过公式 \(2^{PWM分辨率} - 1\) 得出。
+   * @~English
+   * @brief The maximum PWM duty cycle value calculated based on the PWM resolution, obtained by the formula \(2^{PWM分辨率} -
+   * 1\).
+   */  /**
+   * @~Chinese
+   * @brief 根据PWM分辨率计算出的最大PWM占空比数值，通过公式 \(2^{PWM分辨率} - 1\) 得出。
+   * @~English
+   * @brief The maximum PWM duty cycle value calculated based on the PWM resolution, obtained by the formula \(2^{PWM分辨率} - 1\).
+   */
+  static constexpr int16_t kMaxPwmDuty = pow(2, kPwmResolution) - 1;
+
+  /**
+   * @~Chinese
+   * @brief 获取版本号字符串。
+   * @return 版本号字符串，格式为 major.minor.patch。
+   */
+  /**
+   * @~English
+   * @brief Get the version number string.
+   * @return The version number string in the format of major.minor.patch.
+   */
+  static String Version() {
+    return String(kVersionMajor) + '.' + kVersionMinor + '.' + kVersionPatch;
+  }
+
+  /**
+   * @~Chinese
+   * @brief 构造函数，用于创建一个 EspMotor 对象。
+   * @param[in] positive_pin 电机正极引脚编号。
+   * @param[in] negative_pin 电机负极引脚编号。
+   */
+  /**
+   * @~English
+   * @brief Constructor for creating an EspMotor object.
+   * @param[in] positive_pin The pin number of the motor's positive pole.
+   * @param[in] negative_pin The pin number of the motor's negative pole.
+   */
+  explicit EspMotor(const uint8_t positive_pin, const uint8_t negative_pin);
+
+  ~EspMotor() = default;
+
+  /**
+   * @~Chinese
+   * @brief 初始化电机设置。
+   */
+  /**
+   * @~English
+   * @brief Initialize motor settings.
+   */
+  void Init();
+
+  /**
+   * @~Chinese
+   * @brief 直接设置电机的PWM占空比。
+   * @param[in] pwm_duty PWM占空比（取值范围 -1023到1023）。
+   */
+  /**
+   * @~English
+   * @brief Set motor PWM directly.
+   * @param[in] pwm_duty PWM duty cycle (-1023 to 1023).
+   */
+  void PwmDuty(const int16_t pwm_duty);
+
+  /**
+   * @~Chinese
+   * @brief 获取电机驱动器的PWM占空比。
+   * @return 电机驱动器的PWM占空比。
+   */
+  /**
+   * @~English
+   * @brief Get the PWM pwm_duty cycle of the motor driver.
+   * @return The PWM pwm_duty cycle of the motor driver.
+   */
+  int16_t PwmDuty() const;
+
+  /**
+   * @~Chinese
+   * @brief 停止电机运行。
+   */
+  /**
+   * @~English
+   * @brief Stop motor.
+   */
+  void Stop();
+
+ private:
+  const uint8_t positive_pin_ = 0xFF;
+  const uint8_t negative_pin_ = 0xFF;
+  int16_t pwm_duty_ = 0;
+};
+}  // namespace em
+
+#endif

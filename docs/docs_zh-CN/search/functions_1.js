@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['getspeedpid_0',['GetSpeedPid',['../classem_1_1_encoder_motor.html#a4bf31cd9c310102dec61659b5a969184',1,'em::EncoderMotor']]]
+  ['getspeedpid_0',['GetSpeedPid',['../classem_1_1_esp_encoder_motor.html#a57183541e9e26ba4a8013948e3f76f76',1,'em::EspEncoderMotor']]]
 ];

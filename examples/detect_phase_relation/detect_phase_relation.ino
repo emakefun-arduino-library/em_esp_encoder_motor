@@ -1,7 +1,7 @@
 #include "esp_encoder_motor.h"
 
-static em::EncoderMotor g_encoder_motor_0(
-    GPIO_NUM_27, GPIO_NUM_13, GPIO_NUM_18, GPIO_NUM_19, 12, 90, em::EncoderMotor::PhaseRelation::kAPhaseLeads);
+static em::EspEncoderMotor g_encoder_motor_0(
+    GPIO_NUM_27, GPIO_NUM_13, GPIO_NUM_18, GPIO_NUM_19, 12, 90, em::EspEncoderMotor::PhaseRelation::kAPhaseLeads);
 
 void setup() {
   Serial.begin(115200);
@@ -12,7 +12,7 @@ void setup() {
 }
 
 void loop() {
-  const auto rpm = g_encoder_motor_0.Rpm();
+  const auto rpm = g_encoder_motor_0.SpeedRpm();
   if (rpm > 0) {
     printf(
         "[%ul] RPM: %d . The phase of A leads B. Constructed with the em::EncoderMotor::PhaseRelation::kAPhaseLeads "

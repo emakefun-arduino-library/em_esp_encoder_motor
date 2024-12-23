@@ -1,0 +1,530 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Emakefun ESP Encoder Motor Library: em::EspEncoderMotor类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Emakefun ESP Encoder Motor Library<span id="projectnumber">&#160;1.0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classem_1_1_esp_encoder_motor.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pub-static-attribs">静态 Public 属性</a> &#124;
+<a href="classem_1_1_esp_encoder_motor-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">em::EspEncoderMotor类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>该类主要功能如下：  
+ <a href="#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="esp__encoder__motor_8h_source.html">esp_encoder_motor.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a31be7b07b698e29dd1713b57b3be621f" id="r_a31be7b07b698e29dd1713b57b3be621f"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a31be7b07b698e29dd1713b57b3be621f">PhaseRelation</a> { <a class="el" href="#a31be7b07b698e29dd1713b57b3be621fa74feb97f77c7b3a897564eac21252b89">kAPhaseLeads</a>
+, <a class="el" href="#a31be7b07b698e29dd1713b57b3be621faca2a02a3c4858c69a5e66f1790f341e5">kBPhaseLeads</a>
+ }</td></tr>
+<tr class="memdesc:a31be7b07b698e29dd1713b57b3be621f"><td class="mdescLeft">&#160;</td><td class="mdescRight">用于明确电机正转时编码器AB相的相位关系，以便在脉冲计数及后续速度计算等操作中依据正确的相位关系进行处理。  <a href="#a31be7b07b698e29dd1713b57b3be621f">更多...</a><br /></td></tr>
+<tr class="separator:a31be7b07b698e29dd1713b57b3be621f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a2ac046ceb1da6bf547d6ec0a7f317ac6" id="r_a2ac046ceb1da6bf547d6ec0a7f317ac6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ac046ceb1da6bf547d6ec0a7f317ac6">EspEncoderMotor</a> (const uint8_t positive_pin, const uint8_t negative_pin, const uint8_t a_pin, const uint8_t b_pin, const uint32_t ppr, const uint32_t reduction_ration, const <a class="el" href="#a31be7b07b698e29dd1713b57b3be621f">PhaseRelation</a> phase_relation)</td></tr>
+<tr class="memdesc:a2ac046ceb1da6bf547d6ec0a7f317ac6"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造函数，用于创建一个 <a class="el" href="classem_1_1_esp_encoder_motor.html" title="该类主要功能如下：">EspEncoderMotor</a> 对象。  <br /></td></tr>
+<tr class="separator:a2ac046ceb1da6bf547d6ec0a7f317ac6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a671b513ac165859cd28f21de1a678511" id="r_a671b513ac165859cd28f21de1a678511"><td class="memItemLeft" align="right" valign="top"><a id="a671b513ac165859cd28f21de1a678511" name="a671b513ac165859cd28f21de1a678511"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Init</b> ()</td></tr>
+<tr class="memdesc:a671b513ac165859cd28f21de1a678511"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化电机设置。 <br /></td></tr>
+<tr class="separator:a671b513ac165859cd28f21de1a678511"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa059dd8e1196c37ff5382f85b1b1b441" id="r_aa059dd8e1196c37ff5382f85b1b1b441"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa059dd8e1196c37ff5382f85b1b1b441">SetSpeedPid</a> (const float p, const float i, const float d)</td></tr>
+<tr class="memdesc:aa059dd8e1196c37ff5382f85b1b1b441"><td class="mdescLeft">&#160;</td><td class="mdescRight">使用给定的比例（P）、积分（I）、微分（D）参数值来设置速度PID控制器的参数。  <br /></td></tr>
+<tr class="separator:aa059dd8e1196c37ff5382f85b1b1b441"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57183541e9e26ba4a8013948e3f76f76" id="r_a57183541e9e26ba4a8013948e3f76f76"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a57183541e9e26ba4a8013948e3f76f76">GetSpeedPid</a> (float *const p, float *const i, float *const d)</td></tr>
+<tr class="memdesc:a57183541e9e26ba4a8013948e3f76f76"><td class="mdescLeft">&#160;</td><td class="mdescRight">通过指针获取速度PID控制器的比例（P）、积分（I）、微分（D）参数值。  <br /></td></tr>
+<tr class="separator:a57183541e9e26ba4a8013948e3f76f76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e3f4b39cbaefc33cde823a85777a898" id="r_a9e3f4b39cbaefc33cde823a85777a898"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e3f4b39cbaefc33cde823a85777a898">RunPwmDuty</a> (const int16_t pwm_duty)</td></tr>
+<tr class="memdesc:a9e3f4b39cbaefc33cde823a85777a898"><td class="mdescLeft">&#160;</td><td class="mdescRight">直接设置电机的PWM占空比。  <br /></td></tr>
+<tr class="separator:a9e3f4b39cbaefc33cde823a85777a898"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39e0f1d9157d57065471f29f1c6cef02" id="r_a39e0f1d9157d57065471f29f1c6cef02"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39e0f1d9157d57065471f29f1c6cef02">RunSpeed</a> (const int16_t speed_rpm)</td></tr>
+<tr class="memdesc:a39e0f1d9157d57065471f29f1c6cef02"><td class="mdescLeft">&#160;</td><td class="mdescRight">以设定的速度值（RPM）运行电机。  <br /></td></tr>
+<tr class="separator:a39e0f1d9157d57065471f29f1c6cef02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab96a5540a802c1d09743e49d9e16727b" id="r_ab96a5540a802c1d09743e49d9e16727b"><td class="memItemLeft" align="right" valign="top"><a id="ab96a5540a802c1d09743e49d9e16727b" name="ab96a5540a802c1d09743e49d9e16727b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
+<tr class="memdesc:ab96a5540a802c1d09743e49d9e16727b"><td class="mdescLeft">&#160;</td><td class="mdescRight">停止电机运行。 <br /></td></tr>
+<tr class="separator:ab96a5540a802c1d09743e49d9e16727b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38e8e418a87310983db8b031124dbb37" id="r_a38e8e418a87310983db8b031124dbb37"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38e8e418a87310983db8b031124dbb37">EncoderPulseCount</a> () const</td></tr>
+<tr class="memdesc:a38e8e418a87310983db8b031124dbb37"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取编码器脉冲计数。该计数值是在A相下降沿的时候计数，如果是正转会加一，反转则减一。  <br /></td></tr>
+<tr class="separator:a38e8e418a87310983db8b031124dbb37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4939935c51719fdf481104fb90347bc0" id="r_a4939935c51719fdf481104fb90347bc0"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4939935c51719fdf481104fb90347bc0">SpeedRpm</a> () const</td></tr>
+<tr class="memdesc:a4939935c51719fdf481104fb90347bc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取电机当前的转速（RPM）。  <br /></td></tr>
+<tr class="separator:a4939935c51719fdf481104fb90347bc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a9e67011fe540ba662c1f1bc3b2c52e" id="r_a1a9e67011fe540ba662c1f1bc3b2c52e"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a9e67011fe540ba662c1f1bc3b2c52e">PwmDuty</a> () const</td></tr>
+<tr class="memdesc:a1a9e67011fe540ba662c1f1bc3b2c52e"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取电机驱动器的PWM占空比。  <br /></td></tr>
+<tr class="separator:a1a9e67011fe540ba662c1f1bc3b2c52e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77e95dcd126833e6c3063eba098eb0a7" id="r_a77e95dcd126833e6c3063eba098eb0a7"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77e95dcd126833e6c3063eba098eb0a7">TargetRpm</a> () const</td></tr>
+<tr class="memdesc:a77e95dcd126833e6c3063eba098eb0a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取电机的目标转速（RPM）。  <br /></td></tr>
+<tr class="separator:a77e95dcd126833e6c3063eba098eb0a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:abbad7224f631d5994d6154c1ba535d19" id="r_abbad7224f631d5994d6154c1ba535d19"><td class="memItemLeft" align="right" valign="top">static String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abbad7224f631d5994d6154c1ba535d19">Version</a> ()</td></tr>
+<tr class="memdesc:abbad7224f631d5994d6154c1ba535d19"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取版本号字符串。  <br /></td></tr>
+<tr class="separator:abbad7224f631d5994d6154c1ba535d19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+静态 Public 属性</h2></td></tr>
+<tr class="memitem:ac6f344ab98c2c55cacc219321616dfeb" id="r_ac6f344ab98c2c55cacc219321616dfeb"><td class="memItemLeft" align="right" valign="top"><a id="ac6f344ab98c2c55cacc219321616dfeb" name="ac6f344ab98c2c55cacc219321616dfeb"></a>
+static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>kVersionMajor</b> = 1</td></tr>
+<tr class="memdesc:ac6f344ab98c2c55cacc219321616dfeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">主版本号。 <br /></td></tr>
+<tr class="separator:ac6f344ab98c2c55cacc219321616dfeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4760fc7abf919d055b262de79403e2c" id="r_ae4760fc7abf919d055b262de79403e2c"><td class="memItemLeft" align="right" valign="top"><a id="ae4760fc7abf919d055b262de79403e2c" name="ae4760fc7abf919d055b262de79403e2c"></a>
+static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>kVersionMinor</b> = 0</td></tr>
+<tr class="memdesc:ae4760fc7abf919d055b262de79403e2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">次版本号。 <br /></td></tr>
+<tr class="separator:ae4760fc7abf919d055b262de79403e2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a605419ac02ed20b692e8cbf74495a252" id="r_a605419ac02ed20b692e8cbf74495a252"><td class="memItemLeft" align="right" valign="top"><a id="a605419ac02ed20b692e8cbf74495a252" name="a605419ac02ed20b692e8cbf74495a252"></a>
+static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>kVersionPatch</b> = 1</td></tr>
+<tr class="memdesc:a605419ac02ed20b692e8cbf74495a252"><td class="mdescLeft">&#160;</td><td class="mdescRight">修订版本号。 <br /></td></tr>
+<tr class="separator:a605419ac02ed20b692e8cbf74495a252"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>该类主要功能如下： </p>
+<ol type="1">
+<li>支持编码器输出信号为A、B两相且A、B两通道信号序列相位差为90度的编码电机。</li>
+<li>支持以指定的速度（RPM）驱动电机运转，或者以指定的PWM占空比直接驱动电机。</li>
+<li>支持获取电机当前的转速信息，单位为RPM。</li>
+<li>支持获取编码脉冲计数值，此计数值在A相下降沿进行更新，电机正转时计数值加1，反转时减1。</li>
+<li>支持获取电机驱动器当前设置的PWM占空比。 </li>
+</ol>
+<dl class="section examples"><dt>示例</dt><dd><a class="el" href="detect_phase_relation_8ino-example.html#_a0">detect_phase_relation.ino</a>, <a class="el" href="forward_stop_backward_8ino-example.html#_a0">forward_stop_backward.ino</a>, <a class="el" href="run_pwm_8ino-example.html#_a0">run_pwm.ino</a>, <a class="el" href="run_rpm_with_analog_input_8ino-example.html#_a0">run_rpm_with_analog_input.ino</a> , 以及 <a class="el" href="run_speed_8ino-example.html#_a0">run_speed.ino</a>.</dd>
+</dl>
+</div><h2 class="groupheader">成员枚举类型说明</h2>
+<a id="a31be7b07b698e29dd1713b57b3be621f" name="a31be7b07b698e29dd1713b57b3be621f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31be7b07b698e29dd1713b57b3be621f">&#9670;&#160;</a></span>PhaseRelation</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#a31be7b07b698e29dd1713b57b3be621f">em::EspEncoderMotor::PhaseRelation</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>用于明确电机正转时编码器AB相的相位关系，以便在脉冲计数及后续速度计算等操作中依据正确的相位关系进行处理。 </p>
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a31be7b07b698e29dd1713b57b3be621fa74feb97f77c7b3a897564eac21252b89" name="a31be7b07b698e29dd1713b57b3be621fa74feb97f77c7b3a897564eac21252b89"></a>kAPhaseLeads&#160;</td><td class="fielddoc"><p>表示电机正转时A相领先于B相。 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a31be7b07b698e29dd1713b57b3be621faca2a02a3c4858c69a5e66f1790f341e5" name="a31be7b07b698e29dd1713b57b3be621faca2a02a3c4858c69a5e66f1790f341e5"></a>kBPhaseLeads&#160;</td><td class="fielddoc"><p>表示电机正转时B相领先于A相。 </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a2ac046ceb1da6bf547d6ec0a7f317ac6" name="a2ac046ceb1da6bf547d6ec0a7f317ac6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ac046ceb1da6bf547d6ec0a7f317ac6">&#9670;&#160;</a></span>EspEncoderMotor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">em::EspEncoderMotor::EspEncoderMotor </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>positive_pin</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>negative_pin</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>a_pin</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>b_pin</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint32_t</td>          <td class="paramname"><span class="paramname"><em>ppr</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint32_t</td>          <td class="paramname"><span class="paramname"><em>reduction_ration</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="#a31be7b07b698e29dd1713b57b3be621f">PhaseRelation</a></td>          <td class="paramname"><span class="paramname"><em>phase_relation</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>构造函数，用于创建一个 <a class="el" href="classem_1_1_esp_encoder_motor.html" title="该类主要功能如下：">EspEncoderMotor</a> 对象。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">positive_pin</td><td>电机正极引脚编号。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">negative_pin</td><td>电机负极引脚编号。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">a_pin</td><td>编码器A相引脚编号。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">b_pin</td><td>编码器B相引脚编号。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ppr</td><td>每转脉冲数。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">reduction_ration</td><td>减速比。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">phase_relation</td><td>相位关系（A相领先或B相领先，指电机正转时的情况），PhaseRelation。</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>如果用户不清楚自己所使用的编码电机的phase_relation参数具体取值，可以使用示例程序 <a class="el" href="detect_phase_relation_8ino-example.html">detect_phase_relation.ino</a> 来帮助检测确定该参数的值。 </p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a38e8e418a87310983db8b031124dbb37" name="a38e8e418a87310983db8b031124dbb37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38e8e418a87310983db8b031124dbb37">&#9670;&#160;</a></span>EncoderPulseCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t em::EspEncoderMotor::EncoderPulseCount </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取编码器脉冲计数。该计数值是在A相下降沿的时候计数，如果是正转会加一，反转则减一。 </p>
+<dl class="section return"><dt>返回</dt><dd>编码器脉冲数。 </dd></dl>
+
+</div>
+</div>
+<a id="a57183541e9e26ba4a8013948e3f76f76" name="a57183541e9e26ba4a8013948e3f76f76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57183541e9e26ba4a8013948e3f76f76">&#9670;&#160;</a></span>GetSpeedPid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void em::EspEncoderMotor::GetSpeedPid </td>
+          <td>(</td>
+          <td class="paramtype">float *const</td>          <td class="paramname"><span class="paramname"><em>p</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *const</td>          <td class="paramname"><span class="paramname"><em>i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *const</td>          <td class="paramname"><span class="paramname"><em>d</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>通过指针获取速度PID控制器的比例（P）、积分（I）、微分（D）参数值。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">p</td><td>用于获取比例系数（P）值的指针，函数执行后该指针指向的内存位置将存储对应的参数值。 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">i</td><td>用于获取积分系数（I）值的指针，函数执行后该指针指向的内存位置将存储对应的参数值。 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">d</td><td>用于获取微分系数（D）值的指针，函数执行后该指针指向的内存位置将存储对应的参数值。 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1a9e67011fe540ba662c1f1bc3b2c52e" name="a1a9e67011fe540ba662c1f1bc3b2c52e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a9e67011fe540ba662c1f1bc3b2c52e">&#9670;&#160;</a></span>PwmDuty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t em::EspEncoderMotor::PwmDuty </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取电机驱动器的PWM占空比。 </p>
+<dl class="section return"><dt>返回</dt><dd>电机驱动器的PWM占空比。 </dd></dl>
+
+</div>
+</div>
+<a id="a9e3f4b39cbaefc33cde823a85777a898" name="a9e3f4b39cbaefc33cde823a85777a898"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e3f4b39cbaefc33cde823a85777a898">&#9670;&#160;</a></span>RunPwmDuty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void em::EspEncoderMotor::RunPwmDuty </td>
+          <td>(</td>
+          <td class="paramtype">const int16_t</td>          <td class="paramname"><span class="paramname"><em>pwm_duty</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>直接设置电机的PWM占空比。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pwm_duty</td><td>PWM占空比（取值范围 -1023到1023）。 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a39e0f1d9157d57065471f29f1c6cef02" name="a39e0f1d9157d57065471f29f1c6cef02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39e0f1d9157d57065471f29f1c6cef02">&#9670;&#160;</a></span>RunSpeed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void em::EspEncoderMotor::RunSpeed </td>
+          <td>(</td>
+          <td class="paramtype">const int16_t</td>          <td class="paramname"><span class="paramname"><em>speed_rpm</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>以设定的速度值（RPM）运行电机。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">speed_rpm</td><td>速度设定值（RPM）。 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa059dd8e1196c37ff5382f85b1b1b441" name="aa059dd8e1196c37ff5382f85b1b1b441"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa059dd8e1196c37ff5382f85b1b1b441">&#9670;&#160;</a></span>SetSpeedPid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void em::EspEncoderMotor::SetSpeedPid </td>
+          <td>(</td>
+          <td class="paramtype">const float</td>          <td class="paramname"><span class="paramname"><em>p</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float</td>          <td class="paramname"><span class="paramname"><em>i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float</td>          <td class="paramname"><span class="paramname"><em>d</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>使用给定的比例（P）、积分（I）、微分（D）参数值来设置速度PID控制器的参数。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">p</td><td>比例系数（P）的值。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">i</td><td>积分系数（I）的值。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">d</td><td>微分系数（D）的值。 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4939935c51719fdf481104fb90347bc0" name="a4939935c51719fdf481104fb90347bc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4939935c51719fdf481104fb90347bc0">&#9670;&#160;</a></span>SpeedRpm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t em::EspEncoderMotor::SpeedRpm </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取电机当前的转速（RPM）。 </p>
+<dl class="section return"><dt>返回</dt><dd>电机当前的转速（RPM）。 </dd></dl>
+
+</div>
+</div>
+<a id="a77e95dcd126833e6c3063eba098eb0a7" name="a77e95dcd126833e6c3063eba098eb0a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77e95dcd126833e6c3063eba098eb0a7">&#9670;&#160;</a></span>TargetRpm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t em::EspEncoderMotor::TargetRpm </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取电机的目标转速（RPM）。 </p>
+<dl class="section return"><dt>返回</dt><dd>电机的目标转速（RPM）。 </dd></dl>
+
+</div>
+</div>
+<a id="abbad7224f631d5994d6154c1ba535d19" name="abbad7224f631d5994d6154c1ba535d19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbad7224f631d5994d6154c1ba535d19">&#9670;&#160;</a></span>Version()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static String em::EspEncoderMotor::Version </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>获取版本号字符串。 </p>
+<dl class="section return"><dt>返回</dt><dd>版本号字符串，格式为 major.minor.patch。 </dd></dl>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>src/<a class="el" href="esp__encoder__motor_8h_source.html">esp_encoder_motor.h</a></li>
+<li>src/<b>esp_encoder_motor.cpp</b></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>em</b></li><li class="navelem"><a class="el" href="classem_1_1_esp_encoder_motor.html">EspEncoderMotor</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
+</body>
+</html>

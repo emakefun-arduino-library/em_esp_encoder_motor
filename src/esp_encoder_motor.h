@@ -14,12 +14,12 @@
 #include <cstdint>
 #include <thread>
 
-#include "utils/motor_driver.h"
+#include "esp_motor.h"
 
 namespace em {
 /**
  * @~Chinese
- * @class EncoderMotor
+ * @class EspEncoderMotor
  * @brief 该类主要功能如下：
  * @details
  * -# 支持编码器输出信号为A、B两相且A、B两通道信号序列相位差为90度的编码电机。
@@ -27,7 +27,7 @@ namespace em {
  * -# 支持获取电机当前的转速信息，单位为RPM。
  * -# 支持获取编码脉冲计数值，此计数值在A相下降沿进行更新，电机正转时计数值加1，反转时减1。
  * -# 支持获取电机驱动器当前设置的PWM占空比。
- * @example run_rpm.ino 以指定的转速（RPM）转动电机
+ * @example run_speed.ino 以指定的转速（RPM）转动电机
  * @example run_pwm.ino 以指定的PMW占空比转动电机
  * @example forward_stop_backward.ino 电机前进后退停止
  * @example detect_phase_relation.ino
@@ -38,7 +38,7 @@ namespace em {
  */
 /**
  * @~English
- * @class EncoderMotor
+ * @class EspEncoderMotor
  * @brief The main functions of this class are as follows:
  * @details
  * -# Supports encoded motors with encoder output signals of A and B phases and a phase difference of 90 degrees
@@ -48,17 +48,17 @@ namespace em {
  * -# Supports obtaining the encoder pulse count value. This count value is updated at the falling edge of phase A, incremented
  * by 1 during forward rotation and decremented by 1 during reverse rotation.
  * -# Supports obtaining the PWM duty cycle currently set on the motor driver.
- * @example run_rpm.ino Rotate the motor at the specified speed (RPM).
+ * @example run_speed.ino Rotate the motor at the specified speed (RPM).
  * @example run_pwm.ino Rotate the motor with the specified PWM duty cycle.
  * @example forward_stop_backward.ino Move the motor forward, stop it, and then move it backward.
  * @example detect_phase_relation.ino Connect the encoded motor to the specified positions as described in the example program.
  * After the program runs successfully, it will print out whether kAPhaseLeads or kBPhaseLeads should be used based on the
  * actual phase relationship between the A and B phases of the encoder during forward rotation of the motor, helping the user
- * determine the value that should be set for the phase_relation parameter when creating an EncoderMotor object.
+ * determine the value that should be set for the phase_relation parameter when creating an EspEncoderMotor object.
  * @example run_rpm_with_analog_input.ino Dynamically set the rotation speed of the motor according to the analog value of the
  * specific I/O port.
  */
-class EncoderMotor {
+class EspEncoderMotor {
  public:
   /**
    * @~Chinese
@@ -88,7 +88,7 @@ class EncoderMotor {
    * @~English
    * @brief Patch version number.
    */
-  static constexpr uint8_t kVersionPatch = 0;
+  static constexpr uint8_t kVersionPatch = 1;
 
   /**
    * @~Chinese
@@ -138,11 +138,11 @@ class EncoderMotor {
 
   /**
    * @~Chinese
-   * @brief 构造函数，用于创建一个 EncoderMotor 对象。
-   * @param[in] pin_positive 电机正极引脚编号。
-   * @param[in] pin_negative 电机负极引脚编号。
-   * @param[in] pin_a 编码器A相引脚编号。
-   * @param[in] pin_b 编码器B相引脚编号。
+   * @brief 构造函数，用于创建一个 EspEncoderMotor 对象。
+   * @param[in] positive_pin 电机正极引脚编号。
+   * @param[in] negative_pin 电机负极引脚编号。
+   * @param[in] a_pin 编码器A相引脚编号。
+   * @param[in] b_pin 编码器B相引脚编号。
    * @param[in] ppr 每转脉冲数。
    * @param[in] reduction_ration 减速比。
    * @param[in] phase_relation 相位关系（A相领先或B相领先，指电机正转时的情况），@ref PhaseRelation。
@@ -152,11 +152,11 @@ class EncoderMotor {
    */
   /**
    * @~English
-   * @brief Constructor for creating an EncoderMotor object.
-   * @param[in] pin_positive The pin number of the motor's positive pole.
-   * @param[in] pin_negative The pin number of the motor's negative pole.
-   * @param[in] pin_a The pin number of the encoder's A phase.
-   * @param[in] pin_b The pin number of the encoder's B phase.
+   * @brief Constructor for creating an EspEncoderMotor object.
+   * @param[in] positive_pin The pin number of the motor's positive pole.
+   * @param[in] negative_pin The pin number of the motor's negative pole.
+   * @param[in] a_pin The pin number of the encoder's A phase.
+   * @param[in] b_pin The pin number of the encoder's B phase.
    * @param[in] ppr Pulses per revolution.
    * @param[in] reduction_ration Reduction ratio.
    * @param[in] phase_relation Phase relationship (A phase leads or B phase leads, referring to the situation when the motor is
@@ -165,15 +165,15 @@ class EncoderMotor {
    * If the user is unsure about the value of the phase_relation parameter for the encoded motor they are using, they
    * can use the example program @ref detect_phase_relation.ino to help detect and determine the value of this parameter.
    */
-  EncoderMotor(const uint8_t pin_positive,
-               const uint8_t pin_negative,
-               const uint8_t pin_a,
-               const uint8_t pin_b,
-               const uint32_t ppr,
-               const uint32_t reduction_ration,
-               const PhaseRelation phase_relation);
+  EspEncoderMotor(const uint8_t positive_pin,
+                  const uint8_t negative_pin,
+                  const uint8_t a_pin,
+                  const uint8_t b_pin,
+                  const uint32_t ppr,
+                  const uint32_t reduction_ration,
+                  const PhaseRelation phase_relation);
 
-  ~EncoderMotor();
+  ~EspEncoderMotor();
 
   /**
    * @~Chinese
@@ -237,14 +237,14 @@ class EncoderMotor {
   /**
    * @~Chinese
    * @brief 以设定的速度值（RPM）运行电机。
-   * @param[in] rpm 速度设定值（RPM）。
+   * @param[in] speed_rpm 速度设定值（RPM）。
    */
   /**
    * @~English
    * @brief Run motor at speed setpoint.
-   * @param[in] rpm Speed setpoint(RPM).
+   * @param[in] speed_rpm Speed setpoint(RPM).
    */
-  void RunRpm(const int16_t rpm);
+  void RunSpeed(const int16_t speed_rpm);
 
   /**
    * @~Chinese
@@ -279,7 +279,7 @@ class EncoderMotor {
    * @brief Get the current speed of the motor.
    * @return The current speed of the motor in RPM.
    */
-  int32_t Rpm() const;
+  int32_t SpeedRpm() const;
 
   /**
    * @~Chinese
@@ -328,7 +328,7 @@ class EncoderMotor {
   std::condition_variable condition_;
   std::thread* update_rpm_thread_ = nullptr;
   std::thread* driving_thread_ = nullptr;
-  MotorDriver motor_driver_;
+  EspMotor motor_driver_;
   const uint8_t pin_a_ = 0;
   const uint8_t pin_b_ = 0;
   const double total_ppr_ = 0;
@@ -337,8 +337,8 @@ class EncoderMotor {
   int64_t previous_pulse_count_ = 0;
   std::atomic<int64_t> pulse_count_ = 0;
   std::chrono::system_clock::time_point last_update_speed_time_ = std::chrono::time_point<std::chrono::system_clock>::min();
-  int32_t rpm_ = 0;
-  int32_t target_rpm_ = 0.0;
+  int32_t speed_rpm_ = 0;
+  int32_t target_speed_rpm_ = 0.0;
   bool drive_ = false;
 };
 }  // namespace em
