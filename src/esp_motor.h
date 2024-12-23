@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _EM_ESP_MOTOR_DRIVER_H_
-#define _EM_ESP_MOTOR_DRIVER_H_
+#ifndef _EM_ESP_MOTOR_H_
+#define _EM_ESP_MOTOR_H_
 
 /**
  * @file esp_motor.h
