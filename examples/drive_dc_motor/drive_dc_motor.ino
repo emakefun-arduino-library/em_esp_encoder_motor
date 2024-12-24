@@ -1,39 +1,32 @@
+#include "esp_encoder_motor_lib.h"
 #include "esp_motor.h"
 
 namespace {
+em::EspMotor g_motor_0(  // M0
+    GPIO_NUM_27,         // The pin number of the motor's positive pole.
+    GPIO_NUM_13          // The pin number of the motor's negative pole.
+);
 
-/**
- * M0:
- * +: GPIO 27
- * -: GPIO 13
- */
-em::EspMotor g_motor_0(GPIO_NUM_27, GPIO_NUM_13);
+em::EspMotor g_motor_1(  // M1
+    GPIO_NUM_4,          // The pin number of the motor's positive pole.
+    GPIO_NUM_2           // The pin number of the motor's negative pole.
+);
 
-/**
- * M1:
- * +: GPIO 4
- * -: GPIO 2
- */
-em::EspMotor g_motor_1(GPIO_NUM_4, GPIO_NUM_2);
+em::EspMotor g_motor_2(  // M2
+    GPIO_NUM_17,         // The pin number of the motor's positive pole.
+    GPIO_NUM_12          // The pin number of the motor's negative pole.
+);
 
-/**
- * M2:
- * +: GPIO 17
- * -: GPIO 12
- */
-em::EspMotor g_motor_2(GPIO_NUM_17, GPIO_NUM_12);
-
-/**
- * M3:
- * +: GPIO 15
- * -: GPIO 14
- */
-em::EspMotor g_motor_3(GPIO_NUM_15, GPIO_NUM_14);
+em::EspMotor g_motor_3(  // M3
+    GPIO_NUM_15,         // The pin number of the motor's positive pole.
+    GPIO_NUM_14          // The pin number of the motor's negative pole.
+);
 }  // namespace
 
 void setup() {
   Serial.begin(115200);
   printf("setting up\n");
+  printf("Emakefun ESP Encoder Motor Library Version: %s\n", em::esp_encoder_motor_lib::Version().c_str());
   g_motor_0.Init();
   g_motor_1.Init();
   g_motor_2.Init();

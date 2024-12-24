@@ -1,8 +1,8 @@
 var classem_1_1_esp_encoder_motor =
 [
-    [ "PhaseRelation", "classem_1_1_esp_encoder_motor.html#a31be7b07b698e29dd1713b57b3be621f", [
-      [ "kAPhaseLeads", "classem_1_1_esp_encoder_motor.html#a31be7b07b698e29dd1713b57b3be621fa74feb97f77c7b3a897564eac21252b89", null ],
-      [ "kBPhaseLeads", "classem_1_1_esp_encoder_motor.html#a31be7b07b698e29dd1713b57b3be621faca2a02a3c4858c69a5e66f1790f341e5", null ]
+    [ "PhaseRelation", "classem_1_1_esp_encoder_motor.html#a87af18efdcf69c8049fbbaaeaf83c361", [
+      [ "kAPhaseLeads", "classem_1_1_esp_encoder_motor.html#a87af18efdcf69c8049fbbaaeaf83c361a343af86fc2784d3aa705d47072faf7ea", null ],
+      [ "kBPhaseLeads", "classem_1_1_esp_encoder_motor.html#a87af18efdcf69c8049fbbaaeaf83c361ac96a617bf90c07ac7b710a63fb62883c", null ]
     ] ],
     [ "EspEncoderMotor", "classem_1_1_esp_encoder_motor.html#a2ac046ceb1da6bf547d6ec0a7f317ac6", null ],
     [ "EncoderPulseCount", "classem_1_1_esp_encoder_motor.html#a38e8e418a87310983db8b031124dbb37", null ],

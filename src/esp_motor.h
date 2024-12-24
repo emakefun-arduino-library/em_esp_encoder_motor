@@ -29,36 +29,6 @@ class EspMotor {
  public:
   /**
    * @~Chinese
-   * @brief 主版本号。
-   */
-  /**
-   * @~English
-   * @brief Major version number.
-   */
-  static constexpr uint8_t kVersionMajor = 1;
-
-  /**
-   * @~Chinese
-   * @brief 次版本号。
-   */
-  /**
-   * @~English
-   * @brief Minor version number.
-   */
-  static constexpr uint8_t kVersionMinor = 0;
-
-  /**
-   * @~Chinese
-   * @brief 修订版本号。
-   */
-  /**
-   * @~English
-   * @brief Patch version number.
-   */
-  static constexpr uint8_t kVersionPatch = 1;
-
-  /**
-   * @~Chinese
    * @brief PWM的分辨率，决定了PWM占空比可调节的精细程度，单位为位，这里设置为10位。
    * /
   /**
@@ -90,20 +60,6 @@ class EspMotor {
    * @brief The maximum PWM duty cycle value calculated based on the PWM resolution, obtained by the formula \(2^{PWM分辨率} - 1\).
    */
   static constexpr int16_t kMaxPwmDuty = pow(2, kPwmResolution) - 1;
-
-  /**
-   * @~Chinese
-   * @brief 获取版本号字符串。
-   * @return 版本号字符串，格式为 major.minor.patch。
-   */
-  /**
-   * @~English
-   * @brief Get the version number string.
-   * @return The version number string in the format of major.minor.patch.
-   */
-  static String Version() {
-    return String(kVersionMajor) + '.' + kVersionMinor + '.' + kVersionPatch;
-  }
 
   /**
    * @~Chinese

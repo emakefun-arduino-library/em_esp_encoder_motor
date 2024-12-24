@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Emakefun ESP Encoder Motor Library<span id="projectnumber">&#160;1.0.1</span>
+   <div id="projectname">Emakefun ESP Encoder Motor Library<span id="projectnumber">&#160;1.0.2</span>
    </div>
   </td>
  </tr>
@@ -99,8 +99,6 @@ $(function(){initNavTree('classem_1_1_esp_encoder_motor.html',''); initResizable
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="classem_1_1_esp_encoder_motor-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">em::EspEncoderMotor Class Reference</div></div>
 </div><!--header-->
@@ -113,15 +111,15 @@ $(function(){initNavTree('classem_1_1_esp_encoder_motor.html',''); initResizable
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a31be7b07b698e29dd1713b57b3be621f" id="r_a31be7b07b698e29dd1713b57b3be621f"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a31be7b07b698e29dd1713b57b3be621f">PhaseRelation</a> { <a class="el" href="#a31be7b07b698e29dd1713b57b3be621fa74feb97f77c7b3a897564eac21252b89">kAPhaseLeads</a>
-, <a class="el" href="#a31be7b07b698e29dd1713b57b3be621faca2a02a3c4858c69a5e66f1790f341e5">kBPhaseLeads</a>
+<tr class="memitem:a87af18efdcf69c8049fbbaaeaf83c361" id="r_a87af18efdcf69c8049fbbaaeaf83c361"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87af18efdcf69c8049fbbaaeaf83c361">PhaseRelation</a> : uint8_t { <a class="el" href="#a87af18efdcf69c8049fbbaaeaf83c361a343af86fc2784d3aa705d47072faf7ea">kAPhaseLeads</a>
+, <a class="el" href="#a87af18efdcf69c8049fbbaaeaf83c361ac96a617bf90c07ac7b710a63fb62883c">kBPhaseLeads</a>
  }</td></tr>
-<tr class="memdesc:a31be7b07b698e29dd1713b57b3be621f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to clarify the phase relationship between phase A and phase B of the encoder when the motor is rotating forward, so that the correct phase relationship can be used in operations such as pulse counting and subsequent speed calculation.  <a href="#a31be7b07b698e29dd1713b57b3be621f">More...</a><br /></td></tr>
-<tr class="separator:a31be7b07b698e29dd1713b57b3be621f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:a87af18efdcf69c8049fbbaaeaf83c361"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to clarify the phase relationship between phase A and phase B of the encoder when the motor is rotating forward, so that the correct phase relationship can be used in operations such as pulse counting and subsequent speed calculation.  <a href="#a87af18efdcf69c8049fbbaaeaf83c361">More...</a><br /></td></tr>
+<tr class="separator:a87af18efdcf69c8049fbbaaeaf83c361"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2ac046ceb1da6bf547d6ec0a7f317ac6" id="r_a2ac046ceb1da6bf547d6ec0a7f317ac6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ac046ceb1da6bf547d6ec0a7f317ac6">EspEncoderMotor</a> (const uint8_t positive_pin, const uint8_t negative_pin, const uint8_t a_pin, const uint8_t b_pin, const uint32_t ppr, const uint32_t reduction_ration, const <a class="el" href="#a31be7b07b698e29dd1713b57b3be621f">PhaseRelation</a> phase_relation)</td></tr>
+<tr class="memitem:a2ac046ceb1da6bf547d6ec0a7f317ac6" id="r_a2ac046ceb1da6bf547d6ec0a7f317ac6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ac046ceb1da6bf547d6ec0a7f317ac6">EspEncoderMotor</a> (const uint8_t positive_pin, const uint8_t negative_pin, const uint8_t a_pin, const uint8_t b_pin, const uint32_t ppr, const uint32_t reduction_ration, const <a class="el" href="#a87af18efdcf69c8049fbbaaeaf83c361">PhaseRelation</a> phase_relation)</td></tr>
 <tr class="memdesc:a2ac046ceb1da6bf547d6ec0a7f317ac6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for creating an <a class="el" href="classem_1_1_esp_encoder_motor.html" title="The main functions of this class are as follows:">EspEncoderMotor</a> object.  <br /></td></tr>
 <tr class="separator:a2ac046ceb1da6bf547d6ec0a7f317ac6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a671b513ac165859cd28f21de1a678511" id="r_a671b513ac165859cd28f21de1a678511"><td class="memItemLeft" align="right" valign="top"><a id="a671b513ac165859cd28f21de1a678511" name="a671b513ac165859cd28f21de1a678511"></a>
@@ -156,27 +154,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
 <tr class="memitem:a77e95dcd126833e6c3063eba098eb0a7" id="r_a77e95dcd126833e6c3063eba098eb0a7"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77e95dcd126833e6c3063eba098eb0a7">TargetRpm</a> () const</td></tr>
 <tr class="memdesc:a77e95dcd126833e6c3063eba098eb0a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the target speed of the motor in RPM.  <br /></td></tr>
 <tr class="separator:a77e95dcd126833e6c3063eba098eb0a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr class="memitem:abbad7224f631d5994d6154c1ba535d19" id="r_abbad7224f631d5994d6154c1ba535d19"><td class="memItemLeft" align="right" valign="top">static String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abbad7224f631d5994d6154c1ba535d19">Version</a> ()</td></tr>
-<tr class="memdesc:abbad7224f631d5994d6154c1ba535d19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the version number string.  <br /></td></tr>
-<tr class="separator:abbad7224f631d5994d6154c1ba535d19"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
-Static Public Attributes</h2></td></tr>
-<tr class="memitem:ac6f344ab98c2c55cacc219321616dfeb" id="r_ac6f344ab98c2c55cacc219321616dfeb"><td class="memItemLeft" align="right" valign="top"><a id="ac6f344ab98c2c55cacc219321616dfeb" name="ac6f344ab98c2c55cacc219321616dfeb"></a>
-static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>kVersionMajor</b> = 1</td></tr>
-<tr class="memdesc:ac6f344ab98c2c55cacc219321616dfeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Major version number. <br /></td></tr>
-<tr class="separator:ac6f344ab98c2c55cacc219321616dfeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4760fc7abf919d055b262de79403e2c" id="r_ae4760fc7abf919d055b262de79403e2c"><td class="memItemLeft" align="right" valign="top"><a id="ae4760fc7abf919d055b262de79403e2c" name="ae4760fc7abf919d055b262de79403e2c"></a>
-static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>kVersionMinor</b> = 0</td></tr>
-<tr class="memdesc:ae4760fc7abf919d055b262de79403e2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minor version number. <br /></td></tr>
-<tr class="separator:ae4760fc7abf919d055b262de79403e2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a605419ac02ed20b692e8cbf74495a252" id="r_a605419ac02ed20b692e8cbf74495a252"><td class="memItemLeft" align="right" valign="top"><a id="a605419ac02ed20b692e8cbf74495a252" name="a605419ac02ed20b692e8cbf74495a252"></a>
-static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>kVersionPatch</b> = 1</td></tr>
-<tr class="memdesc:a605419ac02ed20b692e8cbf74495a252"><td class="mdescLeft">&#160;</td><td class="mdescRight">Patch version number. <br /></td></tr>
-<tr class="separator:a605419ac02ed20b692e8cbf74495a252"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The main functions of this class are as follows: </p>
@@ -190,31 +167,23 @@ static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>k
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="detect_phase_relation_8ino-example.html#_a0">detect_phase_relation.ino</a>, <a class="el" href="forward_stop_backward_8ino-example.html#_a0">forward_stop_backward.ino</a>, <a class="el" href="run_pwm_8ino-example.html#_a0">run_pwm.ino</a>, <a class="el" href="run_rpm_with_analog_input_8ino-example.html#_a0">run_rpm_with_analog_input.ino</a>, and <a class="el" href="run_speed_8ino-example.html#_a0">run_speed.ino</a>.</dd>
 </dl>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
-<a id="a31be7b07b698e29dd1713b57b3be621f" name="a31be7b07b698e29dd1713b57b3be621f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a31be7b07b698e29dd1713b57b3be621f">&#9670;&#160;</a></span>PhaseRelation</h2>
+<a id="a87af18efdcf69c8049fbbaaeaf83c361" name="a87af18efdcf69c8049fbbaaeaf83c361"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87af18efdcf69c8049fbbaaeaf83c361">&#9670;&#160;</a></span>PhaseRelation</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum class <a class="el" href="#a31be7b07b698e29dd1713b57b3be621f">em::EspEncoderMotor::PhaseRelation</a></td>
+          <td class="memname">enum <a class="el" href="#a87af18efdcf69c8049fbbaaeaf83c361">em::EspEncoderMotor::PhaseRelation</a> : uint8_t</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Used to clarify the phase relationship between phase A and phase B of the encoder when the motor is rotating forward, so that the correct phase relationship can be used in operations such as pulse counting and subsequent speed calculation. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a31be7b07b698e29dd1713b57b3be621fa74feb97f77c7b3a897564eac21252b89" name="a31be7b07b698e29dd1713b57b3be621fa74feb97f77c7b3a897564eac21252b89"></a>kAPhaseLeads&#160;</td><td class="fielddoc"><p>Represents the situation where phase A leads phase B when the motor is rotating forward. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a87af18efdcf69c8049fbbaaeaf83c361a343af86fc2784d3aa705d47072faf7ea" name="a87af18efdcf69c8049fbbaaeaf83c361a343af86fc2784d3aa705d47072faf7ea"></a>kAPhaseLeads&#160;</td><td class="fielddoc"><p>Represents the situation where phase A leads phase B when the motor is rotating forward. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a31be7b07b698e29dd1713b57b3be621faca2a02a3c4858c69a5e66f1790f341e5" name="a31be7b07b698e29dd1713b57b3be621faca2a02a3c4858c69a5e66f1790f341e5"></a>kBPhaseLeads&#160;</td><td class="fielddoc"><p>Represents the situation where phase B leads phase A when the motor is rotating forward. </p>
+<tr><td class="fieldname"><a id="a87af18efdcf69c8049fbbaaeaf83c361ac96a617bf90c07ac7b710a63fb62883c" name="a87af18efdcf69c8049fbbaaeaf83c361ac96a617bf90c07ac7b710a63fb62883c"></a>kBPhaseLeads&#160;</td><td class="fielddoc"><p>Represents the situation where phase B leads phase A when the motor is rotating forward. </p>
 </td></tr>
 </table>
 
@@ -260,7 +229,7 @@ static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>k
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="#a31be7b07b698e29dd1713b57b3be621f">PhaseRelation</a></td>          <td class="paramname"><span class="paramname"><em>phase_relation</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="#a87af18efdcf69c8049fbbaaeaf83c361">PhaseRelation</a></td>          <td class="paramname"><span class="paramname"><em>phase_relation</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -274,7 +243,7 @@ static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>k
     <tr><td class="paramdir">[in]</td><td class="paramname">b_pin</td><td>The pin number of the encoder's B phase. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">ppr</td><td>Pulses per revolution. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">reduction_ration</td><td>Reduction ratio. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">phase_relation</td><td>Phase relationship (A phase leads or B phase leads, referring to the situation when the motor is rotating forward), <a class="el" href="#a31be7b07b698e29dd1713b57b3be621f">PhaseRelation</a>.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">phase_relation</td><td>Phase relationship (A phase leads or B phase leads, referring to the situation when the motor is rotating forward), <a class="el" href="#a87af18efdcf69c8049fbbaaeaf83c361">PhaseRelation</a>.</td></tr>
   </table>
   </dd>
 </dl>
@@ -482,34 +451,6 @@ static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>k
 
 <p>Get the target speed of the motor in RPM. </p>
 <dl class="section return"><dt>Returns</dt><dd>The target speed of the motor in RPM. </dd></dl>
-
-</div>
-</div>
-<a id="abbad7224f631d5994d6154c1ba535d19" name="abbad7224f631d5994d6154c1ba535d19"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abbad7224f631d5994d6154c1ba535d19">&#9670;&#160;</a></span>Version()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static String em::EspEncoderMotor::Version </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the version number string. </p>
-<dl class="section return"><dt>Returns</dt><dd>The version number string in the format of major.minor.patch. </dd></dl>
 
 </div>
 </div>

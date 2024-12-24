@@ -32,7 +32,8 @@ var NAVTREE =
         [ "全部", "functions.html", null ],
         [ "函数", "functions_func.html", null ],
         [ "变量", "functions_vars.html", null ],
-        [ "枚举", "functions_enum.html", null ]
+        [ "枚举", "functions_enum.html", null ],
+        [ "枚举值", "functions_eval.html", null ]
       ] ]
     ] ],
     [ "文件", "files.html", [

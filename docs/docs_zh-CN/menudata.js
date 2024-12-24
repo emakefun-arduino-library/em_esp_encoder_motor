@@ -31,7 +31,8 @@ var menudata={children:[
 {text:"全部",url:"functions.html"},
 {text:"函数",url:"functions_func.html"},
 {text:"变量",url:"functions_vars.html"},
-{text:"枚举",url:"functions_enum.html"}]}]},
+{text:"枚举",url:"functions_enum.html"},
+{text:"枚举值",url:"functions_eval.html"}]}]},
 {text:"文件",url:"files.html",children:[
 {text:"文件列表",url:"files.html"}]},
 {text:"示例",url:"examples.html"}]}

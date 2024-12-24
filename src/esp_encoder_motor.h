@@ -62,36 +62,6 @@ class EspEncoderMotor {
  public:
   /**
    * @~Chinese
-   * @brief 主版本号。
-   */
-  /**
-   * @~English
-   * @brief Major version number.
-   */
-  static constexpr uint8_t kVersionMajor = 1;
-
-  /**
-   * @~Chinese
-   * @brief 次版本号。
-   */
-  /**
-   * @~English
-   * @brief Minor version number.
-   */
-  static constexpr uint8_t kVersionMinor = 0;
-
-  /**
-   * @~Chinese
-   * @brief 修订版本号。
-   */
-  /**
-   * @~English
-   * @brief Patch version number.
-   */
-  static constexpr uint8_t kVersionPatch = 1;
-
-  /**
-   * @~Chinese
    * @brief 用于明确电机正转时编码器AB相的相位关系，以便在脉冲计数及后续速度计算等操作中依据正确的相位关系进行处理。
    */
   /**
@@ -100,7 +70,7 @@ class EspEncoderMotor {
    * forward, so that the correct phase relationship can be used in operations such as pulse counting and subsequent speed
    * calculation.
    */
-  enum class PhaseRelation {
+  enum PhaseRelation : uint8_t {
     /**
      * @~Chinese
      * @brief 表示电机正转时A相领先于B相。
@@ -121,20 +91,6 @@ class EspEncoderMotor {
      */
     kBPhaseLeads,
   };
-
-  /**
-   * @~Chinese
-   * @brief 获取版本号字符串。
-   * @return 版本号字符串，格式为 major.minor.patch。
-   */
-  /**
-   * @~English
-   * @brief Get the version number string.
-   * @return The version number string in the format of major.minor.patch.
-   */
-  static String Version() {
-    return String(kVersionMajor) + '.' + kVersionMinor + '.' + kVersionPatch;
-  }
 
   /**
    * @~Chinese

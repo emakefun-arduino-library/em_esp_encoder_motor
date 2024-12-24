@@ -1,48 +1,59 @@
 #include "esp_encoder_motor.h"
+#include "esp_encoder_motor_lib.h"
 
-/**
- * E0:
- * +: GPIO 27
- * -: GPIO 13
- * A: GPIO 18
- * B: GPIO 19
- */
-static em::EspEncoderMotor g_encoder_motor_0(
-    GPIO_NUM_27, GPIO_NUM_13, GPIO_NUM_18, GPIO_NUM_19, 12, 90, em::EspEncoderMotor::PhaseRelation::kAPhaseLeads);
+namespace {
+constexpr uint32_t kPPR = 12;              // Pulses per revolution.
+constexpr uint32_t kReductionRation = 90;  // Reduction ratio.
 
-/**
- * E1:
- * +: GPIO 4
- * -: GPIO 2
- * A: GPIO 5
- * B: GPIO 23
- */
-static em::EspEncoderMotor g_encoder_motor_1(
-    GPIO_NUM_4, GPIO_NUM_2, GPIO_NUM_5, GPIO_NUM_23, 12, 90, em::EspEncoderMotor::PhaseRelation::kAPhaseLeads);
+em::EspEncoderMotor g_encoder_motor_0(  // E0
+    GPIO_NUM_27,                        // The pin number of the motor's positive pole.
+    GPIO_NUM_13,                        // The pin number of the motor's negative pole.
+    GPIO_NUM_18,                        // The pin number of the encoder's A phase.
+    GPIO_NUM_19,                        // The pin number of the encoder's B phase.
+    kPPR,                               // Pulses per revolution.
+    kReductionRation,                   // Reduction ratio.
+    em::EspEncoderMotor::kAPhaseLeads   // Phase relationship (A phase leads or B phase leads, referring to the situation when
+                                        // the motor is rotating forward)
+);
 
-/**
- * E2:
- * +: GPIO 17
- * -: GPIO 12
- * A: GPIO 35
- * B: GPIO 16
- */
-static em::EspEncoderMotor g_encoder_motor_2(
-    GPIO_NUM_17, GPIO_NUM_12, GPIO_NUM_35, GPIO_NUM_36, 12, 90, em::EspEncoderMotor::PhaseRelation::kAPhaseLeads);
+em::EspEncoderMotor g_encoder_motor_1(  // E1
+    GPIO_NUM_4,                         // The pin number of the motor's positive pole.
+    GPIO_NUM_2,                         // The pin number of the motor's negative pole.
+    GPIO_NUM_5,                         // The pin number of the encoder's A phase.
+    GPIO_NUM_23,                        // The pin number of the encoder's B phase.
+    kPPR,                               // Pulses per revolution.
+    kReductionRation,                   // Reduction ratio.
+    em::EspEncoderMotor::kAPhaseLeads   // Phase relationship (A phase leads or B phase leads, referring to the situation when
+                                        // the motor is rotating forward)
+);
 
-/**
- * E3:
- * +: GPIO 15
- * -: GPIO 14
- * A: GPIO 34
- * B: GPIO 39
- */
-static em::EspEncoderMotor g_encoder_motor_3(
-    GPIO_NUM_15, GPIO_NUM_14, GPIO_NUM_34, GPIO_NUM_39, 12, 90, em::EspEncoderMotor::PhaseRelation::kAPhaseLeads);
+em::EspEncoderMotor g_encoder_motor_2(  // E2
+    GPIO_NUM_17,                        // The pin number of the motor's positive pole.
+    GPIO_NUM_12,                        // The pin number of the motor's negative pole.
+    GPIO_NUM_35,                        // The pin number of the encoder's A phase.
+    GPIO_NUM_36,                        // The pin number of the encoder's B phase.
+    kPPR,                               // Pulses per revolution.
+    kReductionRation,                   // Reduction ratio.
+    em::EspEncoderMotor::kAPhaseLeads   // Phase relationship (A phase leads or B phase leads, referring to the situation when
+                                        // the motor is rotating forward)
+);
+
+em::EspEncoderMotor g_encoder_motor_3(  // E3
+    GPIO_NUM_15,                        // The pin number of the motor's positive pole.
+    GPIO_NUM_14,                        // The pin number of the motor's negative pole.
+    GPIO_NUM_34,                        // The pin number of the encoder's A phase.
+    GPIO_NUM_39,                        // The pin number of the encoder's B phase.
+    kPPR,                               // Pulses per revolution.
+    kReductionRation,                   // Reduction ratio.
+    em::EspEncoderMotor::kAPhaseLeads   // Phase relationship (A phase leads or B phase leads, referring to the situation when
+                                        // the motor is rotating forward)
+);
+}  // namespace
 
 void setup() {
   Serial.begin(115200);
   printf("setting up\n");
+  printf("Emakefun ESP Encoder Motor Library Version: %s\n", em::esp_encoder_motor_lib::Version().c_str());
   g_encoder_motor_0.Init();
   g_encoder_motor_1.Init();
   g_encoder_motor_2.Init();
