@@ -7,6 +7,17 @@
  * @file esp_encoder_motor_lib.h
  */
 
+/**
+ * @mainpage
+ * @~Chinese
+ * - Github链接： https://github.com/emakefun-arduino-library/em_esp_encoder_motor
+ * - 库下载链接： https://github.com/emakefun-arduino-library/em_esp_encoder_motor/archive/refs/tags/latest.zip
+ *
+ * @~English
+ * - Github link: https://github.com/emakefun-arduino-library/em_esp_encoder_motor
+ * - Library download link: https://github.com/emakefun-arduino-library/em_esp_encoder_motor/archive/refs/tags/latest.zip
+ */
+
 #include <WString.h>
 
 namespace em {

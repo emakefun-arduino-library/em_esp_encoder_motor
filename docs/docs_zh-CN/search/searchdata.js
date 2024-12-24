@@ -1,12 +1,13 @@
 var indexSectionsWithContent =
 {
-  0: "egikprstv",
+  0: "egiklmprstv",
   1: "e",
   2: "e",
   3: "egiprstv",
   4: "k",
   5: "p",
-  6: "k"
+  6: "k",
+  7: "elm"
 };
 
 var indexSectionNames =
@@ -17,7 +18,8 @@ var indexSectionNames =
   3: "functions",
   4: "variables",
   5: "enums",
-  6: "enumvalues"
+  6: "enumvalues",
+  7: "pages"
 };
 
 var indexSectionLabels =
@@ -28,6 +30,7 @@ var indexSectionLabels =
   3: "函数",
   4: "变量",
   5: "枚举",
-  6: "枚举值"
+  6: "枚举值",
+  7: "页"
 };
 
