@@ -1,3 +1,29 @@
+/**
+ * @~Chinese
+ * @file detect_phase_relation.ino
+ * @brief 示例：将编码电机按照示例程序中的说明接入到指定位置E0，程序运行成功后，会根据电机正转时编码器AB相的实际相位关系，
+ * 在串口打印输出是使用 @ref kAPhaseLeads 还是 @ref
+ * kBPhaseLeads，以此帮助用户确定在创建EncoderMotor对象时phase_relation参数应设置的值。
+ * @example detect_phase_relation.ino
+ * 将编码电机按照示例程序中的说明接入到指定位置E0，程序运行成功后，会根据电机正转时编码器AB相的实际相位关系，
+ * 在串口打印输出是使用 @ref kAPhaseLeads 还是 @ref
+ * kBPhaseLeads，以此帮助用户确定在创建EncoderMotor对象时phase_relation参数应设置的值。
+ */
+/**
+ * @~English
+ * @file detect_phase_relation.ino
+ * @brief
+ * Example: Connect the encoded motor to the specified positions E0 as described in the example program.
+ * After the program runs successfully, it will print out whether kAPhaseLeads or kBPhaseLeads should be used based on the
+ * actual phase relationship between the A and B phases of the encoder during forward rotation of the motor, helping the user
+ * determine the value that should be set for the phase_relation parameter when creating an EspEncoderMotor object.
+ * @example detect_phase_relation.ino
+ * Connect the encoded motor to the specified positions E0 as described in the example program.
+ * After the program runs successfully, it will print out whether kAPhaseLeads or kBPhaseLeads should be used based on the
+ * actual phase relationship between the A and B phases of the encoder during forward rotation of the motor, helping the user
+ * determine the value that should be set for the phase_relation parameter when creating an EspEncoderMotor object.
+ */
+
 #include "esp_encoder_motor.h"
 #include "esp_encoder_motor_lib.h"
 

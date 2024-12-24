@@ -104,7 +104,7 @@ $(function(){initNavTree('classem_1_1_esp_encoder_motor.html',''); initResizable
 </div><!--header-->
 <div class="contents">
 
-<p>The main functions of this class are as follows:  
+<p>Encoder Motor Class.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="esp__encoder__motor_8h_source.html">esp_encoder_motor.h</a>&gt;</code></p>
@@ -120,11 +120,10 @@ Public Types</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a2ac046ceb1da6bf547d6ec0a7f317ac6" id="r_a2ac046ceb1da6bf547d6ec0a7f317ac6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ac046ceb1da6bf547d6ec0a7f317ac6">EspEncoderMotor</a> (const uint8_t positive_pin, const uint8_t negative_pin, const uint8_t a_pin, const uint8_t b_pin, const uint32_t ppr, const uint32_t reduction_ration, const <a class="el" href="#a87af18efdcf69c8049fbbaaeaf83c361">PhaseRelation</a> phase_relation)</td></tr>
-<tr class="memdesc:a2ac046ceb1da6bf547d6ec0a7f317ac6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for creating an <a class="el" href="classem_1_1_esp_encoder_motor.html" title="The main functions of this class are as follows:">EspEncoderMotor</a> object.  <br /></td></tr>
+<tr class="memdesc:a2ac046ceb1da6bf547d6ec0a7f317ac6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for creating an <a class="el" href="classem_1_1_esp_encoder_motor.html" title="Encoder Motor Class.">EspEncoderMotor</a> object.  <br /></td></tr>
 <tr class="separator:a2ac046ceb1da6bf547d6ec0a7f317ac6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a671b513ac165859cd28f21de1a678511" id="r_a671b513ac165859cd28f21de1a678511"><td class="memItemLeft" align="right" valign="top"><a id="a671b513ac165859cd28f21de1a678511" name="a671b513ac165859cd28f21de1a678511"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Init</b> ()</td></tr>
-<tr class="memdesc:a671b513ac165859cd28f21de1a678511"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize motor settings. <br /></td></tr>
+<tr class="memitem:a671b513ac165859cd28f21de1a678511" id="r_a671b513ac165859cd28f21de1a678511"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a671b513ac165859cd28f21de1a678511">Init</a> ()</td></tr>
+<tr class="memdesc:a671b513ac165859cd28f21de1a678511"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize motor settings.  <br /></td></tr>
 <tr class="separator:a671b513ac165859cd28f21de1a678511"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa059dd8e1196c37ff5382f85b1b1b441" id="r_aa059dd8e1196c37ff5382f85b1b1b441"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa059dd8e1196c37ff5382f85b1b1b441">SetSpeedPid</a> (const float p, const float i, const float d)</td></tr>
 <tr class="memdesc:aa059dd8e1196c37ff5382f85b1b1b441"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the parameters of the speed PID controller with the given Proportional (P), Integral (I), and Derivative (D) parameter values.  <br /></td></tr>
@@ -138,9 +137,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Init</b> ()</td></tr>
 <tr class="memitem:a39e0f1d9157d57065471f29f1c6cef02" id="r_a39e0f1d9157d57065471f29f1c6cef02"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39e0f1d9157d57065471f29f1c6cef02">RunSpeed</a> (const int16_t speed_rpm)</td></tr>
 <tr class="memdesc:a39e0f1d9157d57065471f29f1c6cef02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run motor at speed setpoint.  <br /></td></tr>
 <tr class="separator:a39e0f1d9157d57065471f29f1c6cef02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab96a5540a802c1d09743e49d9e16727b" id="r_ab96a5540a802c1d09743e49d9e16727b"><td class="memItemLeft" align="right" valign="top"><a id="ab96a5540a802c1d09743e49d9e16727b" name="ab96a5540a802c1d09743e49d9e16727b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
-<tr class="memdesc:ab96a5540a802c1d09743e49d9e16727b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop motor. <br /></td></tr>
+<tr class="memitem:ab96a5540a802c1d09743e49d9e16727b" id="r_ab96a5540a802c1d09743e49d9e16727b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab96a5540a802c1d09743e49d9e16727b">Stop</a> ()</td></tr>
+<tr class="memdesc:ab96a5540a802c1d09743e49d9e16727b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop motor.  <br /></td></tr>
 <tr class="separator:ab96a5540a802c1d09743e49d9e16727b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38e8e418a87310983db8b031124dbb37" id="r_a38e8e418a87310983db8b031124dbb37"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38e8e418a87310983db8b031124dbb37">EncoderPulseCount</a> () const</td></tr>
 <tr class="memdesc:a38e8e418a87310983db8b031124dbb37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get encoder pulse count. The count value is incremented by one during forward rotation and decremented by one during reverse rotation, counted at the falling edge of phase A.  <br /></td></tr>
@@ -156,8 +154,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
 <tr class="separator:a77e95dcd126833e6c3063eba098eb0a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The main functions of this class are as follows: </p>
-<ol type="1">
+<div class="textblock"><p>Encoder Motor Class. </p>
+<p>The main functions of this class are as follows:</p><ol type="1">
 <li>Supports encoded motors with encoder output signals of A and B phases and a phase difference of 90 degrees between the signal sequences of A and B channels.</li>
 <li>Supports driving the motor at a specified speed (RPM) or directly driving the motor with a specified PWM duty cycle.</li>
 <li>Supports obtaining the current speed information of the motor in RPM.</li>
@@ -166,6 +164,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
 </ol>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="detect_phase_relation_8ino-example.html#_a0">detect_phase_relation.ino</a>, <a class="el" href="forward_stop_backward_8ino-example.html#_a0">forward_stop_backward.ino</a>, <a class="el" href="run_pwm_8ino-example.html#_a0">run_pwm.ino</a>, <a class="el" href="run_rpm_with_analog_input_8ino-example.html#_a0">run_rpm_with_analog_input.ino</a>, and <a class="el" href="run_speed_8ino-example.html#_a0">run_speed.ino</a>.</dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="esp__encoder__motor_8h_source.html#l00044">44</a> of file <a class="el" href="esp__encoder__motor_8h_source.html">esp_encoder_motor.h</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a87af18efdcf69c8049fbbaaeaf83c361" name="a87af18efdcf69c8049fbbaaeaf83c361"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a87af18efdcf69c8049fbbaaeaf83c361">&#9670;&#160;</a></span>PhaseRelation</h2>
@@ -186,6 +186,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
 <tr><td class="fieldname"><a id="a87af18efdcf69c8049fbbaaeaf83c361ac96a617bf90c07ac7b710a63fb62883c" name="a87af18efdcf69c8049fbbaaeaf83c361ac96a617bf90c07ac7b710a63fb62883c"></a>kBPhaseLeads&#160;</td><td class="fielddoc"><p>Represents the situation where phase B leads phase A when the motor is rotating forward. </p>
 </td></tr>
 </table>
+
+<p class="definition">Definition at line <a class="el" href="esp__encoder__motor_8h_source.html#l00056">56</a> of file <a class="el" href="esp__encoder__motor_8h_source.html">esp_encoder_motor.h</a>.</p>
 
 </div>
 </div>
@@ -234,7 +236,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructor for creating an <a class="el" href="classem_1_1_esp_encoder_motor.html" title="The main functions of this class are as follows:">EspEncoderMotor</a> object. </p>
+<p>Constructor for creating an <a class="el" href="classem_1_1_esp_encoder_motor.html" title="Encoder Motor Class.">EspEncoderMotor</a> object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">positive_pin</td><td>The pin number of the motor's positive pole. </td></tr>
@@ -248,6 +250,27 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
   </dd>
 </dl>
 <p>If the user is unsure about the value of the phase_relation parameter for the encoded motor they are using, they can use the example program <a class="el" href="detect_phase_relation_8ino-example.html">detect_phase_relation.ino</a> to help detect and determine the value of this parameter. </p>
+
+<p class="definition">Definition at line <a class="el" href="esp__encoder__motor_8cpp_source.html#l00027">27</a> of file <a class="el" href="esp__encoder__motor_8cpp_source.html">esp_encoder_motor.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aab2231d673e04aa127937edc740ee05a" name="aab2231d673e04aa127937edc740ee05a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab2231d673e04aa127937edc740ee05a">&#9670;&#160;</a></span>~EspEncoderMotor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">em::EspEncoderMotor::~EspEncoderMotor </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="esp__encoder__motor_8cpp_source.html#l00086">86</a> of file <a class="el" href="esp__encoder__motor_8cpp_source.html">esp_encoder_motor.cpp</a>.</p>
 
 </div>
 </div>
@@ -269,6 +292,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
 
 <p>Get encoder pulse count. The count value is incremented by one during forward rotation and decremented by one during reverse rotation, counted at the falling edge of phase A. </p>
 <dl class="section return"><dt>Returns</dt><dd>int32_t Encoder pulses. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="esp__encoder__motor_8cpp_source.html#l00128">128</a> of file <a class="el" href="esp__encoder__motor_8cpp_source.html">esp_encoder_motor.cpp</a>.</p>
 
 </div>
 </div>
@@ -306,6 +331,29 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="esp__encoder__motor_8cpp_source.html#l00073">73</a> of file <a class="el" href="esp__encoder__motor_8cpp_source.html">esp_encoder_motor.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a671b513ac165859cd28f21de1a678511" name="a671b513ac165859cd28f21de1a678511"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a671b513ac165859cd28f21de1a678511">&#9670;&#160;</a></span>Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void em::EspEncoderMotor::Init </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize motor settings. </p>
+
+<p class="definition">Definition at line <a class="el" href="esp__encoder__motor_8cpp_source.html#l00045">45</a> of file <a class="el" href="esp__encoder__motor_8cpp_source.html">esp_encoder_motor.cpp</a>.</p>
+
 </div>
 </div>
 <a id="a1a9e67011fe540ba662c1f1bc3b2c52e" name="a1a9e67011fe540ba662c1f1bc3b2c52e"></a>
@@ -325,6 +373,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
 
 <p>Get the PWM pwm_duty cycle of the motor driver. </p>
 <dl class="section return"><dt>Returns</dt><dd>The PWM pwm_duty cycle of the motor driver. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="esp__encoder__motor_8cpp_source.html#l00137">137</a> of file <a class="el" href="esp__encoder__motor_8cpp_source.html">esp_encoder_motor.cpp</a>.</p>
 
 </div>
 </div>
@@ -351,6 +401,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="esp__encoder__motor_8cpp_source.html#l00092">92</a> of file <a class="el" href="esp__encoder__motor_8cpp_source.html">esp_encoder_motor.cpp</a>.</p>
+
 </div>
 </div>
 <a id="a39e0f1d9157d57065471f29f1c6cef02" name="a39e0f1d9157d57065471f29f1c6cef02"></a>
@@ -375,6 +427,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="esp__encoder__motor_8cpp_source.html#l00104">104</a> of file <a class="el" href="esp__encoder__motor_8cpp_source.html">esp_encoder_motor.cpp</a>.</p>
 
 </div>
 </div>
@@ -412,6 +466,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="esp__encoder__motor_8cpp_source.html#l00060">60</a> of file <a class="el" href="esp__encoder__motor_8cpp_source.html">esp_encoder_motor.cpp</a>.</p>
+
 </div>
 </div>
 <a id="a4939935c51719fdf481104fb90347bc0" name="a4939935c51719fdf481104fb90347bc0"></a>
@@ -431,6 +487,29 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
 
 <p>Get the current speed of the motor. </p>
 <dl class="section return"><dt>Returns</dt><dd>The current speed of the motor in RPM. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="esp__encoder__motor_8cpp_source.html#l00132">132</a> of file <a class="el" href="esp__encoder__motor_8cpp_source.html">esp_encoder_motor.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ab96a5540a802c1d09743e49d9e16727b" name="ab96a5540a802c1d09743e49d9e16727b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab96a5540a802c1d09743e49d9e16727b">&#9670;&#160;</a></span>Stop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void em::EspEncoderMotor::Stop </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stop motor. </p>
+
+<p class="definition">Definition at line <a class="el" href="esp__encoder__motor_8cpp_source.html#l00120">120</a> of file <a class="el" href="esp__encoder__motor_8cpp_source.html">esp_encoder_motor.cpp</a>.</p>
 
 </div>
 </div>
@@ -452,11 +531,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
 <p>Get the target speed of the motor in RPM. </p>
 <dl class="section return"><dt>Returns</dt><dd>The target speed of the motor in RPM. </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="esp__encoder__motor_8cpp_source.html#l00142">142</a> of file <a class="el" href="esp__encoder__motor_8cpp_source.html">esp_encoder_motor.cpp</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="esp__encoder__motor_8h_source.html">esp_encoder_motor.h</a></li>
-<li>src/<b>esp_encoder_motor.cpp</b></li>
+<li>src/<a class="el" href="esp__encoder__motor_8cpp_source.html">esp_encoder_motor.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

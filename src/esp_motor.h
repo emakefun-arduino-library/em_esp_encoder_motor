@@ -17,13 +17,11 @@ namespace em {
  * @~Chinese
  * @class EspMotor
  * @brief 两路PWM电机驱动类
- * @example drive_dc_motor.ino PWM驱动直流电机正反转
  */
 /**
  * @~English
  * @class EspMotor
  * @brief A two-channel PWM motor driver class.
- * @example drive_dc_motor.ino Use PWM to drive the DC motor to rotate forward and backward.
  */
 class EspMotor {
  public:

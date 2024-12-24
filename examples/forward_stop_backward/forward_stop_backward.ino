@@ -1,3 +1,18 @@
+/**
+ * @~Chinese
+ * @file forward_stop_backward.ino
+ * @brief 示例：电机前进后退停止
+ * @example forward_stop_backward.ino
+ * 电机前进后退停止
+ */
+/**
+ * @~English
+ * @file forward_stop_backward.ino
+ * @brief Example: Move the motor forward, stop it, and then move it backward.
+ * @example forward_stop_backward.ino
+ * Move the motor forward, stop it, and then move it backward.
+ */
+
 #include "esp_encoder_motor.h"
 #include "esp_encoder_motor_lib.h"
 

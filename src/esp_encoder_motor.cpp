@@ -1,3 +1,7 @@
+/**
+ * @file esp_encoder_motor.cpp
+ */
+
 #include "esp_encoder_motor.h"
 
 #include <Arduino.h>

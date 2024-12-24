@@ -1,3 +1,20 @@
+/**
+ * @~Chinese
+ * @file run_rpm_with_analog_input.ino
+ * @brief 示例：依据特定 IO 口的模拟值动态设定电机转动速度
+ * @example run_rpm_with_analog_input.ino
+ * 依据特定 IO 口的模拟值动态设定电机转动速度
+ */
+/**
+ * @~English
+ * @file run_rpm_with_analog_input.ino
+ * @brief Example: Dynamically set the rotation speed of the motor according to the analog value of the
+ * specific I/O port.
+ * @example run_rpm_with_analog_input.ino
+ * Dynamically set the rotation speed of the motor according to the analog value of the
+ * specific I/O port.
+ */
+
 #include "esp_encoder_motor.h"
 #include "esp_encoder_motor_lib.h"
 

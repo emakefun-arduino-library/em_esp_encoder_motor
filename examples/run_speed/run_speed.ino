@@ -1,3 +1,18 @@
+/**
+ * @~Chinese
+ * @file run_speed.ino 
+ * @brief 示例：以指定的速度（单位RPM）驱动电机。
+ * @example run_speed.ino
+ * 以指定的速度（单位RPM）驱动电机。
+ */
+/**
+ * @~English
+ * @file run_speed.ino
+ * @brief Example: Rotate the motor at the specified speed (RPM).
+ * @example run_speed.ino
+ * Rotate the motor at the specified speed (RPM).
+ */
+
 #include "esp_encoder_motor.h"
 #include "esp_encoder_motor_lib.h"
 

@@ -1,8 +1,8 @@
 var indexSectionsWithContent =
 {
-  0: "egiklmprstv",
+  0: "defgiklmprstv",
   1: "e",
-  2: "e",
+  2: "defr",
   3: "egiprstv",
   4: "k",
   5: "p",

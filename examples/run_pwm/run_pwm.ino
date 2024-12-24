@@ -1,3 +1,18 @@
+/**
+ * @~Chinese
+ * @file run_pwm.ino
+ * @brief 示例：以指定的PMW占空比转动电机
+ * @example run_pwm.ino
+ * 以指定的PMW占空比转动电机
+ */
+/**
+ * @~English
+ * @file run_pwm.ino
+ * @brief Example: Rotate the motor with the specified PWM duty cycle.
+ * @example run_pwm.ino
+ * Rotate the motor with the specified PWM duty cycle.
+ */
+
 #include "esp_encoder_motor.h"
 #include "esp_encoder_motor_lib.h"
 

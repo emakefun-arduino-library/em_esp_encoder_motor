@@ -104,7 +104,7 @@ $(function(){initNavTree('classem_1_1_esp_encoder_motor.html',''); initResizable
 </div><!--header-->
 <div class="contents">
 
-<p>该类主要功能如下：  
+<p>编码电机驱动类  
  <a href="#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="esp__encoder__motor_8h_source.html">esp_encoder_motor.h</a>&gt;</code></p>
@@ -120,11 +120,10 @@ Public 类型</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
 <tr class="memitem:a2ac046ceb1da6bf547d6ec0a7f317ac6" id="r_a2ac046ceb1da6bf547d6ec0a7f317ac6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ac046ceb1da6bf547d6ec0a7f317ac6">EspEncoderMotor</a> (const uint8_t positive_pin, const uint8_t negative_pin, const uint8_t a_pin, const uint8_t b_pin, const uint32_t ppr, const uint32_t reduction_ration, const <a class="el" href="#a87af18efdcf69c8049fbbaaeaf83c361">PhaseRelation</a> phase_relation)</td></tr>
-<tr class="memdesc:a2ac046ceb1da6bf547d6ec0a7f317ac6"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造函数，用于创建一个 <a class="el" href="classem_1_1_esp_encoder_motor.html" title="该类主要功能如下：">EspEncoderMotor</a> 对象。  <br /></td></tr>
+<tr class="memdesc:a2ac046ceb1da6bf547d6ec0a7f317ac6"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造函数，用于创建一个 <a class="el" href="classem_1_1_esp_encoder_motor.html" title="编码电机驱动类">EspEncoderMotor</a> 对象。  <br /></td></tr>
 <tr class="separator:a2ac046ceb1da6bf547d6ec0a7f317ac6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a671b513ac165859cd28f21de1a678511" id="r_a671b513ac165859cd28f21de1a678511"><td class="memItemLeft" align="right" valign="top"><a id="a671b513ac165859cd28f21de1a678511" name="a671b513ac165859cd28f21de1a678511"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Init</b> ()</td></tr>
-<tr class="memdesc:a671b513ac165859cd28f21de1a678511"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化电机设置。 <br /></td></tr>
+<tr class="memitem:a671b513ac165859cd28f21de1a678511" id="r_a671b513ac165859cd28f21de1a678511"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a671b513ac165859cd28f21de1a678511">Init</a> ()</td></tr>
+<tr class="memdesc:a671b513ac165859cd28f21de1a678511"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化电机设置。  <br /></td></tr>
 <tr class="separator:a671b513ac165859cd28f21de1a678511"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa059dd8e1196c37ff5382f85b1b1b441" id="r_aa059dd8e1196c37ff5382f85b1b1b441"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa059dd8e1196c37ff5382f85b1b1b441">SetSpeedPid</a> (const float p, const float i, const float d)</td></tr>
 <tr class="memdesc:aa059dd8e1196c37ff5382f85b1b1b441"><td class="mdescLeft">&#160;</td><td class="mdescRight">使用给定的比例（P）、积分（I）、微分（D）参数值来设置速度PID控制器的参数。  <br /></td></tr>
@@ -138,9 +137,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Init</b> ()</td></tr>
 <tr class="memitem:a39e0f1d9157d57065471f29f1c6cef02" id="r_a39e0f1d9157d57065471f29f1c6cef02"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39e0f1d9157d57065471f29f1c6cef02">RunSpeed</a> (const int16_t speed_rpm)</td></tr>
 <tr class="memdesc:a39e0f1d9157d57065471f29f1c6cef02"><td class="mdescLeft">&#160;</td><td class="mdescRight">以设定的速度值（RPM）运行电机。  <br /></td></tr>
 <tr class="separator:a39e0f1d9157d57065471f29f1c6cef02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab96a5540a802c1d09743e49d9e16727b" id="r_ab96a5540a802c1d09743e49d9e16727b"><td class="memItemLeft" align="right" valign="top"><a id="ab96a5540a802c1d09743e49d9e16727b" name="ab96a5540a802c1d09743e49d9e16727b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
-<tr class="memdesc:ab96a5540a802c1d09743e49d9e16727b"><td class="mdescLeft">&#160;</td><td class="mdescRight">停止电机运行。 <br /></td></tr>
+<tr class="memitem:ab96a5540a802c1d09743e49d9e16727b" id="r_ab96a5540a802c1d09743e49d9e16727b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab96a5540a802c1d09743e49d9e16727b">Stop</a> ()</td></tr>
+<tr class="memdesc:ab96a5540a802c1d09743e49d9e16727b"><td class="mdescLeft">&#160;</td><td class="mdescRight">停止电机运行。  <br /></td></tr>
 <tr class="separator:ab96a5540a802c1d09743e49d9e16727b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38e8e418a87310983db8b031124dbb37" id="r_a38e8e418a87310983db8b031124dbb37"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38e8e418a87310983db8b031124dbb37">EncoderPulseCount</a> () const</td></tr>
 <tr class="memdesc:a38e8e418a87310983db8b031124dbb37"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取编码器脉冲计数。该计数值是在A相下降沿的时候计数，如果是正转会加一，反转则减一。  <br /></td></tr>
@@ -156,8 +154,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
 <tr class="separator:a77e95dcd126833e6c3063eba098eb0a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
-<div class="textblock"><p>该类主要功能如下： </p>
-<ol type="1">
+<div class="textblock"><p>编码电机驱动类 </p>
+<p>该类主要功能如下：</p><ol type="1">
 <li>支持编码器输出信号为A、B两相且A、B两通道信号序列相位差为90度的编码电机。</li>
 <li>支持以指定的速度（RPM）驱动电机运转，或者以指定的PWM占空比直接驱动电机。</li>
 <li>支持获取电机当前的转速信息，单位为RPM。</li>
@@ -166,6 +164,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
 </ol>
 <dl class="section examples"><dt>示例</dt><dd><a class="el" href="detect_phase_relation_8ino-example.html#_a0">detect_phase_relation.ino</a>, <a class="el" href="forward_stop_backward_8ino-example.html#_a0">forward_stop_backward.ino</a>, <a class="el" href="run_pwm_8ino-example.html#_a0">run_pwm.ino</a>, <a class="el" href="run_rpm_with_analog_input_8ino-example.html#_a0">run_rpm_with_analog_input.ino</a> , 以及 <a class="el" href="run_speed_8ino-example.html#_a0">run_speed.ino</a>.</dd>
 </dl>
+
+<p class="definition">在文件 <a class="el" href="esp__encoder__motor_8h_source.html">esp_encoder_motor.h</a> 第 <a class="el" href="esp__encoder__motor_8h_source.html#l00044">44</a> 行定义.</p>
 </div><h2 class="groupheader">成员枚举类型说明</h2>
 <a id="a87af18efdcf69c8049fbbaaeaf83c361" name="a87af18efdcf69c8049fbbaaeaf83c361"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a87af18efdcf69c8049fbbaaeaf83c361">&#9670;&#160;</a></span>PhaseRelation</h2>
@@ -186,6 +186,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
 <tr><td class="fieldname"><a id="a87af18efdcf69c8049fbbaaeaf83c361ac96a617bf90c07ac7b710a63fb62883c" name="a87af18efdcf69c8049fbbaaeaf83c361ac96a617bf90c07ac7b710a63fb62883c"></a>kBPhaseLeads&#160;</td><td class="fielddoc"><p>表示电机正转时B相领先于A相。 </p>
 </td></tr>
 </table>
+
+<p class="definition">在文件 <a class="el" href="esp__encoder__motor_8h_source.html">esp_encoder_motor.h</a> 第 <a class="el" href="esp__encoder__motor_8h_source.html#l00056">56</a> 行定义.</p>
 
 </div>
 </div>
@@ -234,7 +236,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>构造函数，用于创建一个 <a class="el" href="classem_1_1_esp_encoder_motor.html" title="该类主要功能如下：">EspEncoderMotor</a> 对象。 </p>
+<p>构造函数，用于创建一个 <a class="el" href="classem_1_1_esp_encoder_motor.html" title="编码电机驱动类">EspEncoderMotor</a> 对象。 </p>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">positive_pin</td><td>电机正极引脚编号。 </td></tr>
@@ -248,6 +250,27 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
   </dd>
 </dl>
 <p>如果用户不清楚自己所使用的编码电机的phase_relation参数具体取值，可以使用示例程序 <a class="el" href="detect_phase_relation_8ino-example.html">detect_phase_relation.ino</a> 来帮助检测确定该参数的值。 </p>
+
+<p class="definition">在文件 <a class="el" href="esp__encoder__motor_8cpp_source.html">esp_encoder_motor.cpp</a> 第 <a class="el" href="esp__encoder__motor_8cpp_source.html#l00027">27</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aab2231d673e04aa127937edc740ee05a" name="aab2231d673e04aa127937edc740ee05a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab2231d673e04aa127937edc740ee05a">&#9670;&#160;</a></span>~EspEncoderMotor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">em::EspEncoderMotor::~EspEncoderMotor </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="esp__encoder__motor_8cpp_source.html">esp_encoder_motor.cpp</a> 第 <a class="el" href="esp__encoder__motor_8cpp_source.html#l00086">86</a> 行定义.</p>
 
 </div>
 </div>
@@ -269,6 +292,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
 
 <p>获取编码器脉冲计数。该计数值是在A相下降沿的时候计数，如果是正转会加一，反转则减一。 </p>
 <dl class="section return"><dt>返回</dt><dd>编码器脉冲数。 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="esp__encoder__motor_8cpp_source.html">esp_encoder_motor.cpp</a> 第 <a class="el" href="esp__encoder__motor_8cpp_source.html#l00128">128</a> 行定义.</p>
 
 </div>
 </div>
@@ -306,6 +331,29 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
   </dd>
 </dl>
 
+<p class="definition">在文件 <a class="el" href="esp__encoder__motor_8cpp_source.html">esp_encoder_motor.cpp</a> 第 <a class="el" href="esp__encoder__motor_8cpp_source.html#l00073">73</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a671b513ac165859cd28f21de1a678511" name="a671b513ac165859cd28f21de1a678511"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a671b513ac165859cd28f21de1a678511">&#9670;&#160;</a></span>Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void em::EspEncoderMotor::Init </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>初始化电机设置。 </p>
+
+<p class="definition">在文件 <a class="el" href="esp__encoder__motor_8cpp_source.html">esp_encoder_motor.cpp</a> 第 <a class="el" href="esp__encoder__motor_8cpp_source.html#l00045">45</a> 行定义.</p>
+
 </div>
 </div>
 <a id="a1a9e67011fe540ba662c1f1bc3b2c52e" name="a1a9e67011fe540ba662c1f1bc3b2c52e"></a>
@@ -325,6 +373,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
 
 <p>获取电机驱动器的PWM占空比。 </p>
 <dl class="section return"><dt>返回</dt><dd>电机驱动器的PWM占空比。 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="esp__encoder__motor_8cpp_source.html">esp_encoder_motor.cpp</a> 第 <a class="el" href="esp__encoder__motor_8cpp_source.html#l00137">137</a> 行定义.</p>
 
 </div>
 </div>
@@ -351,6 +401,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
   </dd>
 </dl>
 
+<p class="definition">在文件 <a class="el" href="esp__encoder__motor_8cpp_source.html">esp_encoder_motor.cpp</a> 第 <a class="el" href="esp__encoder__motor_8cpp_source.html#l00092">92</a> 行定义.</p>
+
 </div>
 </div>
 <a id="a39e0f1d9157d57065471f29f1c6cef02" name="a39e0f1d9157d57065471f29f1c6cef02"></a>
@@ -375,6 +427,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">在文件 <a class="el" href="esp__encoder__motor_8cpp_source.html">esp_encoder_motor.cpp</a> 第 <a class="el" href="esp__encoder__motor_8cpp_source.html#l00104">104</a> 行定义.</p>
 
 </div>
 </div>
@@ -412,6 +466,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
   </dd>
 </dl>
 
+<p class="definition">在文件 <a class="el" href="esp__encoder__motor_8cpp_source.html">esp_encoder_motor.cpp</a> 第 <a class="el" href="esp__encoder__motor_8cpp_source.html#l00060">60</a> 行定义.</p>
+
 </div>
 </div>
 <a id="a4939935c51719fdf481104fb90347bc0" name="a4939935c51719fdf481104fb90347bc0"></a>
@@ -431,6 +487,29 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
 
 <p>获取电机当前的转速（RPM）。 </p>
 <dl class="section return"><dt>返回</dt><dd>电机当前的转速（RPM）。 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="esp__encoder__motor_8cpp_source.html">esp_encoder_motor.cpp</a> 第 <a class="el" href="esp__encoder__motor_8cpp_source.html#l00132">132</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ab96a5540a802c1d09743e49d9e16727b" name="ab96a5540a802c1d09743e49d9e16727b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab96a5540a802c1d09743e49d9e16727b">&#9670;&#160;</a></span>Stop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void em::EspEncoderMotor::Stop </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>停止电机运行。 </p>
+
+<p class="definition">在文件 <a class="el" href="esp__encoder__motor_8cpp_source.html">esp_encoder_motor.cpp</a> 第 <a class="el" href="esp__encoder__motor_8cpp_source.html#l00120">120</a> 行定义.</p>
 
 </div>
 </div>
@@ -452,11 +531,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
 <p>获取电机的目标转速（RPM）。 </p>
 <dl class="section return"><dt>返回</dt><dd>电机的目标转速（RPM）。 </dd></dl>
 
+<p class="definition">在文件 <a class="el" href="esp__encoder__motor_8cpp_source.html">esp_encoder_motor.cpp</a> 第 <a class="el" href="esp__encoder__motor_8cpp_source.html#l00142">142</a> 行定义.</p>
+
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>src/<a class="el" href="esp__encoder__motor_8h_source.html">esp_encoder_motor.h</a></li>
-<li>src/<b>esp_encoder_motor.cpp</b></li>
+<li>src/<a class="el" href="esp__encoder__motor_8cpp_source.html">esp_encoder_motor.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

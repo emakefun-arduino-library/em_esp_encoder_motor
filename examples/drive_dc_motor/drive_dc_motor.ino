@@ -1,3 +1,18 @@
+/**
+ * @~Chinese
+ * @file drive_dc_motor.ino
+ * @brief 示例：PWM驱动直流电机正反转
+ * @example drive_dc_motor.ino
+ * PWM驱动直流电机正反转
+ */
+/**
+ * @~English
+ * @file drive_dc_motor.ino
+ * @brief Example: Use PWM to drive the DC motor to rotate forward and backward.
+ * @example drive_dc_motor.ino
+ * Use PWM to drive the DC motor to rotate forward and backward.
+ */
+
 #include "esp_encoder_motor_lib.h"
 #include "esp_motor.h"
 

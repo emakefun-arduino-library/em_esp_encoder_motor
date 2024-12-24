@@ -114,9 +114,8 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:a74b2704b1af8be055672680502aec9fe" id="r_a74b2704b1af8be055672680502aec9fe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74b2704b1af8be055672680502aec9fe">EspMotor</a> (const uint8_t positive_pin, const uint8_t negative_pin)</td></tr>
 <tr class="memdesc:a74b2704b1af8be055672680502aec9fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造函数，用于创建一个 <a class="el" href="classem_1_1_esp_motor.html" title="两路PWM电机驱动类">EspMotor</a> 对象。  <br /></td></tr>
 <tr class="separator:a74b2704b1af8be055672680502aec9fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12afc1adc8a358012f784e723d263f53" id="r_a12afc1adc8a358012f784e723d263f53"><td class="memItemLeft" align="right" valign="top"><a id="a12afc1adc8a358012f784e723d263f53" name="a12afc1adc8a358012f784e723d263f53"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Init</b> ()</td></tr>
-<tr class="memdesc:a12afc1adc8a358012f784e723d263f53"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化电机设置。 <br /></td></tr>
+<tr class="memitem:a12afc1adc8a358012f784e723d263f53" id="r_a12afc1adc8a358012f784e723d263f53"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12afc1adc8a358012f784e723d263f53">Init</a> ()</td></tr>
+<tr class="memdesc:a12afc1adc8a358012f784e723d263f53"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化电机设置。  <br /></td></tr>
 <tr class="separator:a12afc1adc8a358012f784e723d263f53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aacf41e2eba1f3da171cda65050a3026e" id="r_aacf41e2eba1f3da171cda65050a3026e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aacf41e2eba1f3da171cda65050a3026e">PwmDuty</a> (const int16_t pwm_duty)</td></tr>
 <tr class="memdesc:aacf41e2eba1f3da171cda65050a3026e"><td class="mdescLeft">&#160;</td><td class="mdescRight">直接设置电机的PWM占空比。  <br /></td></tr>
@@ -124,20 +123,17 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Init</b> ()</td></tr>
 <tr class="memitem:a299b42612218ad582914e964eb99cc03" id="r_a299b42612218ad582914e964eb99cc03"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a299b42612218ad582914e964eb99cc03">PwmDuty</a> () const</td></tr>
 <tr class="memdesc:a299b42612218ad582914e964eb99cc03"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取电机驱动器的PWM占空比。  <br /></td></tr>
 <tr class="separator:a299b42612218ad582914e964eb99cc03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a034105df860c5275edfc0e66a0c93fe3" id="r_a034105df860c5275edfc0e66a0c93fe3"><td class="memItemLeft" align="right" valign="top"><a id="a034105df860c5275edfc0e66a0c93fe3" name="a034105df860c5275edfc0e66a0c93fe3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
-<tr class="memdesc:a034105df860c5275edfc0e66a0c93fe3"><td class="mdescLeft">&#160;</td><td class="mdescRight">停止电机运行。 <br /></td></tr>
+<tr class="memitem:a034105df860c5275edfc0e66a0c93fe3" id="r_a034105df860c5275edfc0e66a0c93fe3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a034105df860c5275edfc0e66a0c93fe3">Stop</a> ()</td></tr>
+<tr class="memdesc:a034105df860c5275edfc0e66a0c93fe3"><td class="mdescLeft">&#160;</td><td class="mdescRight">停止电机运行。  <br /></td></tr>
 <tr class="separator:a034105df860c5275edfc0e66a0c93fe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 静态 Public 属性</h2></td></tr>
-<tr class="memitem:aad33c4171487e73dcfe1ac3dab37f4d6" id="r_aad33c4171487e73dcfe1ac3dab37f4d6"><td class="memItemLeft" align="right" valign="top"><a id="aad33c4171487e73dcfe1ac3dab37f4d6" name="aad33c4171487e73dcfe1ac3dab37f4d6"></a>
-static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>kPwmResolution</b> = 10</td></tr>
-<tr class="memdesc:aad33c4171487e73dcfe1ac3dab37f4d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM的分辨率，决定了PWM占空比可调节的精细程度，单位为位，这里设置为10位。 / /** <br /></td></tr>
+<tr class="memitem:aad33c4171487e73dcfe1ac3dab37f4d6" id="r_aad33c4171487e73dcfe1ac3dab37f4d6"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad33c4171487e73dcfe1ac3dab37f4d6">kPwmResolution</a> = 10</td></tr>
+<tr class="memdesc:aad33c4171487e73dcfe1ac3dab37f4d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM的分辨率，决定了PWM占空比可调节的精细程度，单位为位，这里设置为10位。 / /**  <br /></td></tr>
 <tr class="separator:aad33c4171487e73dcfe1ac3dab37f4d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee30e21e8a20aa90abdc285a565a7e63" id="r_aee30e21e8a20aa90abdc285a565a7e63"><td class="memItemLeft" align="right" valign="top"><a id="aee30e21e8a20aa90abdc285a565a7e63" name="aee30e21e8a20aa90abdc285a565a7e63"></a>
-static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>kPwmFrequency</b> = 75000</td></tr>
-<tr class="memdesc:aee30e21e8a20aa90abdc285a565a7e63"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM的频率，单位为赫兹，这里设置为75000赫兹，用于控制电机驱动的PWM信号频率。 <br /></td></tr>
+<tr class="memitem:aee30e21e8a20aa90abdc285a565a7e63" id="r_aee30e21e8a20aa90abdc285a565a7e63"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee30e21e8a20aa90abdc285a565a7e63">kPwmFrequency</a> = 75000</td></tr>
+<tr class="memdesc:aee30e21e8a20aa90abdc285a565a7e63"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM的频率，单位为赫兹，这里设置为75000赫兹，用于控制电机驱动的PWM信号频率。  <br /></td></tr>
 <tr class="separator:aee30e21e8a20aa90abdc285a565a7e63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3863cbf9a5e05105be9e3196c475572" id="r_aa3863cbf9a5e05105be9e3196c475572"><td class="memItemLeft" align="right" valign="top">static constexpr int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa3863cbf9a5e05105be9e3196c475572">kMaxPwmDuty</a> = pow(2, <a class="el" href="#aad33c4171487e73dcfe1ac3dab37f4d6">kPwmResolution</a>) - 1</td></tr>
 <tr class="memdesc:aa3863cbf9a5e05105be9e3196c475572"><td class="mdescLeft">&#160;</td><td class="mdescRight">根据PWM分辨率计算出的最大PWM占空比数值，通过公式 (2^{PWM分辨率} - 1) 得出。  <br /></td></tr>
@@ -147,6 +143,8 @@ static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>k
 <div class="textblock"><p>两路PWM电机驱动类 </p>
 <dl class="section examples"><dt>示例</dt><dd><a class="el" href="drive_dc_motor_8ino-example.html#_a0">drive_dc_motor.ino</a>.</dd>
 </dl>
+
+<p class="definition">在文件 <a class="el" href="esp__motor_8h_source.html">esp_motor.h</a> 第 <a class="el" href="esp__motor_8h_source.html#l00026">26</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="a74b2704b1af8be055672680502aec9fe" name="a74b2704b1af8be055672680502aec9fe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a74b2704b1af8be055672680502aec9fe">&#9670;&#160;</a></span>EspMotor()</h2>
@@ -184,9 +182,32 @@ static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>k
   </dd>
 </dl>
 
+<p class="definition">在文件 <a class="el" href="esp__motor_8cpp_source.html">esp_motor.cpp</a> 第 <a class="el" href="esp__motor_8cpp_source.html#l00011">11</a> 行定义.</p>
+
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
+<a id="a12afc1adc8a358012f784e723d263f53" name="a12afc1adc8a358012f784e723d263f53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12afc1adc8a358012f784e723d263f53">&#9670;&#160;</a></span>Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void em::EspMotor::Init </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>初始化电机设置。 </p>
+
+<p class="definition">在文件 <a class="el" href="esp__motor_8cpp_source.html">esp_motor.cpp</a> 第 <a class="el" href="esp__motor_8cpp_source.html#l00014">14</a> 行定义.</p>
+
+</div>
+</div>
 <a id="a299b42612218ad582914e964eb99cc03" name="a299b42612218ad582914e964eb99cc03"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a299b42612218ad582914e964eb99cc03">&#9670;&#160;</a></span>PwmDuty() <span class="overload">[1/2]</span></h2>
 
@@ -204,6 +225,8 @@ static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>k
 
 <p>获取电机驱动器的PWM占空比。 </p>
 <dl class="section return"><dt>返回</dt><dd>电机驱动器的PWM占空比。 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="esp__motor_8cpp_source.html">esp_motor.cpp</a> 第 <a class="el" href="esp__motor_8cpp_source.html#l00031">31</a> 行定义.</p>
 
 </div>
 </div>
@@ -229,6 +252,29 @@ static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>k
   </table>
   </dd>
 </dl>
+
+<p class="definition">在文件 <a class="el" href="esp__motor_8cpp_source.html">esp_motor.cpp</a> 第 <a class="el" href="esp__motor_8cpp_source.html#l00020">20</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a034105df860c5275edfc0e66a0c93fe3" name="a034105df860c5275edfc0e66a0c93fe3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a034105df860c5275edfc0e66a0c93fe3">&#9670;&#160;</a></span>Stop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void em::EspMotor::Stop </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>停止电机运行。 </p>
+
+<p class="definition">在文件 <a class="el" href="esp__motor_8cpp_source.html">esp_motor.cpp</a> 第 <a class="el" href="esp__motor_8cpp_source.html#l00035">35</a> 行定义.</p>
 
 </div>
 </div>
@@ -256,11 +302,65 @@ static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>k
 <p>根据PWM分辨率计算出的最大PWM占空比数值，通过公式 (2^{PWM分辨率} - 1) 得出。 </p>
 <p>根据PWM分辨率计算出的最大PWM占空比数值，通过公式 (2^{PWM分辨率} - 1) 得出。 </p>
 
+<p class="definition">在文件 <a class="el" href="esp__motor_8h_source.html">esp_motor.h</a> 第 <a class="el" href="esp__motor_8h_source.html#l00060">60</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aee30e21e8a20aa90abdc285a565a7e63" name="aee30e21e8a20aa90abdc285a565a7e63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee30e21e8a20aa90abdc285a565a7e63">&#9670;&#160;</a></span>kPwmFrequency</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t em::EspMotor::kPwmFrequency = 75000</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>PWM的频率，单位为赫兹，这里设置为75000赫兹，用于控制电机驱动的PWM信号频率。 </p>
+
+<p class="definition">在文件 <a class="el" href="esp__motor_8h_source.html">esp_motor.h</a> 第 <a class="el" href="esp__motor_8h_source.html#l00045">45</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aad33c4171487e73dcfe1ac3dab37f4d6" name="aad33c4171487e73dcfe1ac3dab37f4d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad33c4171487e73dcfe1ac3dab37f4d6">&#9670;&#160;</a></span>kPwmResolution</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t em::EspMotor::kPwmResolution = 10</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>PWM的分辨率，决定了PWM占空比可调节的精细程度，单位为位，这里设置为10位。 / /** </p>
+
+<p class="definition">在文件 <a class="el" href="esp__motor_8h_source.html">esp_motor.h</a> 第 <a class="el" href="esp__motor_8h_source.html#l00037">37</a> 行定义.</p>
+
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>src/<a class="el" href="esp__motor_8h_source.html">esp_motor.h</a></li>
-<li>src/<b>esp_motor.cpp</b></li>
+<li>src/<a class="el" href="esp__motor_8cpp_source.html">esp_motor.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

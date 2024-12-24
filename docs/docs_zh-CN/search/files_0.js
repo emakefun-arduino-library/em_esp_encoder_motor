@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['esp_5fencoder_5fmotor_2eh_0',['esp_encoder_motor.h',['../esp__encoder__motor_8h.html',1,'']]],
-  ['esp_5fencoder_5fmotor_5flib_2eh_1',['esp_encoder_motor_lib.h',['../esp__encoder__motor__lib_8h.html',1,'']]],
-  ['esp_5fmotor_2eh_2',['esp_motor.h',['../esp__motor_8h.html',1,'']]]
+  ['detect_5fphase_5frelation_2eino_0',['detect_phase_relation.ino',['../detect__phase__relation_8ino.html',1,'']]],
+  ['drive_5fdc_5fmotor_2eino_1',['drive_dc_motor.ino',['../drive__dc__motor_8ino.html',1,'']]]
 ];

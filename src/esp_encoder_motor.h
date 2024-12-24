@@ -20,27 +20,19 @@ namespace em {
 /**
  * @~Chinese
  * @class EspEncoderMotor
- * @brief 该类主要功能如下：
- * @details
+ * @brief 编码电机驱动类
+ * @details 该类主要功能如下：
  * -# 支持编码器输出信号为A、B两相且A、B两通道信号序列相位差为90度的编码电机。
  * -# 支持以指定的速度（RPM）驱动电机运转，或者以指定的PWM占空比直接驱动电机。
  * -# 支持获取电机当前的转速信息，单位为RPM。
  * -# 支持获取编码脉冲计数值，此计数值在A相下降沿进行更新，电机正转时计数值加1，反转时减1。
  * -# 支持获取电机驱动器当前设置的PWM占空比。
- * @example run_speed.ino 以指定的转速（RPM）转动电机
- * @example run_pwm.ino 以指定的PMW占空比转动电机
- * @example forward_stop_backward.ino 电机前进后退停止
- * @example detect_phase_relation.ino
- * 将编码电机按照示例程序中的说明接入到指定位置，程序运行成功后，会根据电机正转时编码器AB相的实际相位关系，
- * 在串口打印输出是使用 @ref kAPhaseLeads 还是 @ref
- * kBPhaseLeads，以此帮助用户确定在创建EncoderMotor对象时phase_relation参数应设置的值。
- * @example run_rpm_with_analog_input.ino 依据特定 IO 口的模拟值动态设定电机转动速度
  */
 /**
  * @~English
  * @class EspEncoderMotor
- * @brief The main functions of this class are as follows:
- * @details
+ * @brief Encoder Motor Class
+ * @details The main functions of this class are as follows:
  * -# Supports encoded motors with encoder output signals of A and B phases and a phase difference of 90 degrees
  * between the signal sequences of A and B channels.
  * -# Supports driving the motor at a specified speed (RPM) or directly driving the motor with a specified PWM duty cycle.
@@ -48,15 +40,6 @@ namespace em {
  * -# Supports obtaining the encoder pulse count value. This count value is updated at the falling edge of phase A, incremented
  * by 1 during forward rotation and decremented by 1 during reverse rotation.
  * -# Supports obtaining the PWM duty cycle currently set on the motor driver.
- * @example run_speed.ino Rotate the motor at the specified speed (RPM).
- * @example run_pwm.ino Rotate the motor with the specified PWM duty cycle.
- * @example forward_stop_backward.ino Move the motor forward, stop it, and then move it backward.
- * @example detect_phase_relation.ino Connect the encoded motor to the specified positions as described in the example program.
- * After the program runs successfully, it will print out whether kAPhaseLeads or kBPhaseLeads should be used based on the
- * actual phase relationship between the A and B phases of the encoder during forward rotation of the motor, helping the user
- * determine the value that should be set for the phase_relation parameter when creating an EspEncoderMotor object.
- * @example run_rpm_with_analog_input.ino Dynamically set the rotation speed of the motor according to the analog value of the
- * specific I/O port.
  */
 class EspEncoderMotor {
  public:
